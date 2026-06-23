@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#FFFFFF" />
+  <title>EREVDECO — Mermer Isıtmalı Bardak Altlığı | Marble Heated Coaster</title>
+  <meta name="description" content="El yapımı mermer ısıtmalı bardak altlığı. Kahveniz saatlerce sıcak kalsın, masanız bir sanat eserine dönüşsün. A handcrafted marble heated coaster that keeps your coffee warm for hours." />
+
+  <meta property="og:title" content="EREVDECO — Your Coffee Deserves More Than 10 Minutes." />
+  <meta property="og:description" content="A handcrafted marble heated coaster designed to keep your favorite drink warm while elevating your space." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://erevdeco.com" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "EREVDECO Marble Heated Coaster",
+    "description": "A handcrafted marble heated coaster that keeps coffee, tea and hot beverages warm for hours.",
+    "brand": { "@type": "Brand", "name": "EREVDECO" },
+    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "1284" }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- ============ PROGRESS BAR ============ -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <a href="#top" class="nav__brand" aria-label="EREVDECO">EREVDECO</a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#why" data-i18n="nav.why">Neden Mermer</a>
+      <a href="#features" data-i18n="nav.features">Özellikler</a>
+      <a href="#specs" data-i18n="nav.specs">Teknik</a>
+      <a href="#faq" data-i18n="nav.faq">SSS</a>
+    </nav>
+    <div class="nav__actions">
+      <button class="lang-toggle" id="langToggle" aria-label="Switch language">
+        <span class="lang-toggle__opt is-active" data-lang="tr">TR</span>
+        <span class="lang-toggle__sep">/</span>
+        <span class="lang-toggle__opt" data-lang="en">EN</span>
+      </button>
+      <a href="#order" class="btn btn--ghost nav__cta" data-i18n="nav.cta">Satın Al</a>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <div class="hero__bg" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <p class="hero__eyebrow" data-i18n="hero.eyebrow">EL YAPIMI · DOĞAL MERMER</p>
+
+      <h1 class="hero__title">
+        <span class="rotator" id="rotator" aria-live="polite">
+          <span class="rotator__item is-active" data-i18n="hero.h1">Kahveniz 10 Dakikadan Fazlasını Hak Ediyor.</span>
+        </span>
+      </h1>
+
+      <p class="hero__sub" data-i18n="hero.sub">
+        El işçiliğiyle yontulmuş mermer ısıtmalı bir altlık — en sevdiğiniz içeceği sıcak tutarken mekânınızı yükseltir.
+      </p>
+
+      <div class="hero__cta">
+        <a href="#order" class="btn btn--solid" data-i18n="hero.cta1">Kahvemi Sıcak Tut</a>
+        <a href="#how" class="btn btn--text" data-i18n="hero.cta2">Nasıl Çalışır →</a>
+      </div>
+
+      <div class="hero__trust">
+        <span class="stars" aria-hidden="true">★★★★★</span>
+        <span data-i18n="hero.trust">1.284 ev sahibi tarafından sevildi · Ücretsiz kargo</span>
+      </div>
+    </div>
+
+    <!-- The product object -->
+    <div class="stage" id="stage" aria-hidden="true">
+      <div class="steam">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="mug">
+        <div class="mug__body"></div>
+        <div class="mug__handle"></div>
+        <div class="mug__coffee"></div>
+      </div>
+      <div class="coaster">
+        <div class="coaster__top"></div>
+        <div class="coaster__glow"></div>
+        <div class="coaster__side"></div>
+      </div>
+      <div class="stage__shadow"></div>
+    </div>
+
+    <div class="hero__scrollcue" aria-hidden="true">
+      <span data-i18n="hero.scroll">Kaydır</span>
+      <i></i>
+    </div>
+  </section>
+
+  <!-- ============ MARQUEE ============ -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span data-i18n="marquee">Saatlerce Sıcak · Doğal Mermer · Sessiz Çalışma · El Yapımı · Hediyeye Hazır · Enerji Dostu ·</span>
+      <span data-i18n="marquee">Saatlerce Sıcak · Doğal Mermer · Sessiz Çalışma · El Yapımı · Hediyeye Hazır · Enerji Dostu ·</span>
+    </div>
+  </div>
+
+  <!-- ============ HOW IT WORKS / SCROLL STORY ============ -->
+  <section class="story" id="how">
+    <div class="story__sticky">
+      <div class="story__visual">
+        <div class="story-mug">
+          <div class="story-steam"><span></span><span></span><span></span></div>
+          <div class="story-mug__body"></div>
+          <div class="story-mug__handle"></div>
+        </div>
+        <div class="story-coaster"></div>
+      </div>
+    </div>
+    <div class="story__steps">
+      <div class="story-step" data-step="1">
+        <span class="story-step__num">01</span>
+        <h3 data-i18n="story.1.t">Yerleştir</h3>
+        <p data-i18n="story.1.b">Fincanınızı mermerin üzerine bırakın. Hepsi bu.</p>
+      </div>
+      <div class="story-step" data-step="2">
+        <span class="story-step__num">02</span>
+        <h3 data-i18n="story.2.t">Isınır</h3>
+        <p data-i18n="story.2.b">Sabit 55°C ile içeceğiniz ilk yudumdaki sıcaklığında kalır.</p>
+      </div>
+      <div class="story-step" data-step="3">
+        <span class="story-step__num">03</span>
+        <h3 data-i18n="story.3.t">Saatlerce Tadını Çıkar</h3>
+        <p data-i18n="story.3.b">Toplantılar, kitaplar, uzun çalışma seansları — her yudum mükemmel.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 1 — THE PROBLEM ============ -->
+  <section class="problem section" id="problem">
+    <div class="section__head reveal">
+      <p class="kicker" data-i18n="problem.kicker">SORUN</p>
+      <h2 class="display" data-i18n="problem.h2">İlk yudum mükemmel. Geri kalanı buz gibi.</h2>
+    </div>
+    <div class="temp-scale reveal">
+      <div class="temp-scale__step is-hot">
+        <span class="temp-scale__deg">62°</span>
+        <span class="temp-scale__label" data-i18n="problem.hot">Sıcak</span>
+        <span class="temp-scale__time" data-i18n="problem.hot.t">0 dk</span>
+      </div>
+      <div class="temp-scale__line"></div>
+      <div class="temp-scale__step is-warm">
+        <span class="temp-scale__deg">41°</span>
+        <span class="temp-scale__label" data-i18n="problem.warm">Ilık</span>
+        <span class="temp-scale__time" data-i18n="problem.warm.t">10 dk</span>
+      </div>
+      <div class="temp-scale__line"></div>
+      <div class="temp-scale__step is-cold">
+        <span class="temp-scale__deg">23°</span>
+        <span class="temp-scale__label" data-i18n="problem.cold">Soğuk</span>
+        <span class="temp-scale__time" data-i18n="problem.cold.t">25 dk</span>
+      </div>
+    </div>
+    <div class="problem__list">
+      <p class="reveal" data-i18n="problem.p1">Kahve soğur.</p>
+      <p class="reveal" data-i18n="problem.p2">Çay aromasını kaybeder.</p>
+      <p class="reveal" data-i18n="problem.p3">Sürekli mikrodalgaya gidip gelirsiniz.</p>
+      <p class="reveal" data-i18n="problem.p4">Ve odağınız her seferinde bölünür.</p>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 2 — TRANSFORMATION ============ -->
+  <section class="transform section--dark" id="transform">
+    <div class="transform__col transform__col--before reveal">
+      <p class="transform__tag" data-i18n="transform.before">ÖNCE</p>
+      <ul>
+        <li data-i18n="transform.b1">Soğumuş kahve</li>
+        <li data-i18n="transform.b2">Dağınık masa</li>
+        <li data-i18n="transform.b3">Bölünen odak</li>
+      </ul>
+    </div>
+    <div class="transform__divider" aria-hidden="true"></div>
+    <div class="transform__col transform__col--after reveal">
+      <p class="transform__tag transform__tag--gold" data-i18n="transform.after">SONRA</p>
+      <ul>
+        <li data-i18n="transform.a1">Sıcak içecek</li>
+        <li data-i18n="transform.a2">Lüks bir masa</li>
+        <li data-i18n="transform.a3">Sakin bir ritüel</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 3 — WHY MARBLE ============ -->
+  <section class="why section" id="why">
+    <div class="why__text reveal">
+      <p class="kicker" data-i18n="why.kicker">NEDEN MERMER</p>
+      <h2 class="display" data-i18n="why.h2">Bir malzeme değil. Bir his.</h2>
+      <p class="why__lede" data-i18n="why.lede">Mermer ısıyı plastik veya metalin asla yapamayacağı şekilde tutar — yavaş, dengeli, zarif. Her parça benzersiz damarlara sahiptir; dünyada tam olarak sizinkinin eşi yoktur.</p>
+      <ul class="why__points">
+        <li class="reveal"><b data-i18n="why.p1.t">Üstün ısı tutma</b><span data-i18n="why.p1.b">Doğal taş ısıyı eşit dağıtır ve uzun süre saklar.</span></li>
+        <li class="reveal"><b data-i18n="why.p2.t">Zarif ağırlık</b><span data-i18n="why.p2.b">Elinizde hissettiğiniz an kalite belli olur.</span></li>
+        <li class="reveal"><b data-i18n="why.p3.t">Zamansız lüks</b><span data-i18n="why.p3.b">Trendler geçer. Mermer her zaman doğru kalır.</span></li>
+      </ul>
+    </div>
+    <div class="why__visual reveal">
+      <div class="marble-swatch"></div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 4 — FEATURES ============ -->
+  <section class="features section" id="features">
+    <div class="section__head reveal">
+      <p class="kicker" data-i18n="features.kicker">ÖZELLİKLER</p>
+      <h2 class="display" data-i18n="features.h2">Her detay, kasıtlı.</h2>
+    </div>
+    <div class="features__grid">
+      <article class="feature-card reveal"><span class="feature-card__ico">◈</span><h3 data-i18n="feat.1.t">Sabit Sıcaklık</h3><p data-i18n="feat.1.b">İçeceğinizi ideal içme sıcaklığında tutar.</p></article>
+      <article class="feature-card reveal"><span class="feature-card__ico">❖</span><h3 data-i18n="feat.2.t">Mermer Doku</h3><p data-i18n="feat.2.b">Her parçada benzersiz, doğal damarlar.</p></article>
+      <article class="feature-card reveal"><span class="feature-card__ico">▢</span><h3 data-i18n="feat.3.t">Minimal Tasarım</h3><p data-i18n="feat.3.b">Her masaya ait, hiçbir yere fazla gelmeyen.</p></article>
+      <article class="feature-card reveal"><span class="feature-card__ico">○</span><h3 data-i18n="feat.4.t">Her Fincanla Uyumlu</h3><p data-i18n="feat.4.b">Kupa, bardak, fincan — hepsi sığar.</p></article>
+      <article class="feature-card reveal"><span class="feature-card__ico">~</span><h3 data-i18n="feat.5.t">Sessiz Çalışma</h3><p data-i18n="feat.5.b">Vınlama yok. Sadece sessiz sıcaklık.</p></article>
+      <article class="feature-card reveal"><span class="feature-card__ico">✦</span><h3 data-i18n="feat.6.t">Hediyeye Hazır</h3><p data-i18n="feat.6.b">Açıldığı anda etkileyen lüks bir kutu.</p></article>
+      <article class="feature-card reveal"><span class="feature-card__ico">⌂</span><h3 data-i18n="feat.7.t">Ev Ofisine Dost</h3><p data-i18n="feat.7.b">Çalışma masanız için tasarlandı.</p></article>
+      <article class="feature-card reveal"><span class="feature-card__ico">⚡</span><h3 data-i18n="feat.8.t">Enerji Dostu</h3><p data-i18n="feat.8.b">Bir LED ampulden daha az tüketir.</p></article>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 5 — LIFESTYLE ============ -->
+  <section class="gallery section" id="gallery">
+    <div class="section__head reveal">
+      <p class="kicker" data-i18n="gallery.kicker">YAŞAM</p>
+      <h2 class="display" data-i18n="gallery.h2">Her ortamın ait olduğu yer.</h2>
+    </div>
+    <div class="gallery__grid">
+      <figure class="gallery__item gallery__item--tall reveal" data-scene="office"><figcaption data-i18n="gallery.office">Lüks Ofis</figcaption></figure>
+      <figure class="gallery__item reveal" data-scene="desk"><figcaption data-i18n="gallery.desk">Tasarım Çalışma Alanı</figcaption></figure>
+      <figure class="gallery__item reveal" data-scene="reading"><figcaption data-i18n="gallery.reading">Okuma Köşesi</figcaption></figure>
+      <figure class="gallery__item gallery__item--wide reveal" data-scene="ritual"><figcaption data-i18n="gallery.ritual">Kahve Ritüeli</figcaption></figure>
+      <figure class="gallery__item reveal" data-scene="winter"><figcaption data-i18n="gallery.winter">Kış Sabahı</figcaption></figure>
+      <figure class="gallery__item reveal" data-scene="studio"><figcaption data-i18n="gallery.studio">Yaratıcı Stüdyo</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 6 — SOCIAL PROOF ============ -->
+  <section class="proof section--soft" id="proof">
+    <div class="section__head reveal">
+      <p class="kicker" data-i18n="proof.kicker">SÖZLER</p>
+      <h2 class="display" data-i18n="proof.h2">1.284 kişi soğuk kahveyi geride bıraktı.</h2>
+    </div>
+    <div class="proof__grid">
+      <blockquote class="reveal"><span class="stars">★★★★★</span><p data-i18n="proof.1">"Satın alana kadar buna ihtiyacım olduğunu bilmiyordum."</p><cite data-i18n="proof.1.n">— Defne K.</cite></blockquote>
+      <blockquote class="reveal"><span class="stars">★★★★★</span><p data-i18n="proof.2">"Kahvem her toplantı boyunca sıcak kalıyor."</p><cite data-i18n="proof.2.n">— Mert A.</cite></blockquote>
+      <blockquote class="reveal"><span class="stars">★★★★★</span><p data-i18n="proof.3">"Olduğundan çok daha pahalı görünüyor."</p><cite data-i18n="proof.3.n">— Selin Y.</cite></blockquote>
+      <blockquote class="reveal"><span class="stars">★★★★★</span><p data-i18n="proof.4">"Şimdiye kadar aldığım en iyi masa aksesuarı."</p><cite data-i18n="proof.4.n">— Can T.</cite></blockquote>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 7 — GIFT ============ -->
+  <section class="gift section" id="gift">
+    <div class="gift__inner reveal">
+      <p class="kicker" data-i18n="gift.kicker">HEDİYE</p>
+      <h2 class="display" data-i18n="gift.h2">Kimsenin almayı düşünmediği — ama herkesin bayıldığı hediye.</h2>
+      <div class="gift__chips">
+        <span data-i18n="gift.c1">Baba</span>
+        <span data-i18n="gift.c2">Anne</span>
+        <span data-i18n="gift.c3">Partner</span>
+        <span data-i18n="gift.c4">İş arkadaşı</span>
+        <span data-i18n="gift.c5">Kahve tutkunları</span>
+        <span data-i18n="gift.c6">Uzaktan çalışanlar</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 8 — SPECS ============ -->
+  <section class="specs section" id="specs">
+    <div class="section__head reveal">
+      <p class="kicker" data-i18n="specs.kicker">TEKNİK</p>
+      <h2 class="display" data-i18n="specs.h2">Mühendislik, görünmez. Sonuç, hissedilir.</h2>
+    </div>
+    <div class="specs__list">
+      <details class="spec reveal" open><summary><span data-i18n="spec.1.t">Malzeme</span><i></i></summary><p data-i18n="spec.1.b">%100 doğal mermer üst yüzey, kaymaz taban.</p></details>
+      <details class="spec reveal"><summary><span data-i18n="spec.2.t">Sıcaklık</span><i></i></summary><p data-i18n="spec.2.b">Sabit 55°C — kahve ve çay için ideal içme aralığı.</p></details>
+      <details class="spec reveal"><summary><span data-i18n="spec.3.t">Güç</span><i></i></summary><p data-i18n="spec.3.b">15W · USB-C ile çalışır · gerilim 5V.</p></details>
+      <details class="spec reveal"><summary><span data-i18n="spec.4.t">Ölçüler</span><i></i></summary><p data-i18n="spec.4.b">Ø 105 mm · yükseklik 18 mm.</p></details>
+      <details class="spec reveal"><summary><span data-i18n="spec.5.t">Ağırlık</span><i></i></summary><p data-i18n="spec.5.b">480 g — elinizde gerçek bir nesne hissi.</p></details>
+      <details class="spec reveal"><summary><span data-i18n="spec.6.t">Güvenlik</span><i></i></summary><p data-i18n="spec.6.b">Aşırı ısınma koruması + otomatik kapanma sensörü.</p></details>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 9 — FAQ ============ -->
+  <section class="faq section--soft" id="faq">
+    <div class="section__head reveal">
+      <p class="kicker" data-i18n="faq.kicker">MERAK EDİLENLER</p>
+      <h2 class="display" data-i18n="faq.h2">Aklınızdaki her soru.</h2>
+    </div>
+    <div class="faq__list">
+      <details class="faq-item reveal"><summary><span data-i18n="faq.1.q">Fincanlara zarar verir mi?</span><i></i></summary><p data-i18n="faq.1.a">Hayır. Yüzey nazik, sabit bir sıcaklıkta kalır — kupalarınız ve bardaklarınız tamamen güvende.</p></details>
+      <details class="faq-item reveal"><summary><span data-i18n="faq.2.q">Güvenli mi?</span><i></i></summary><p data-i18n="faq.2.a">Evet. Aşırı ısınma koruması ve fincan algılayan otomatik kapanma sistemi standarttır.</p></details>
+      <details class="faq-item reveal"><summary><span data-i18n="faq.3.q">Çok elektrik harcar mı?</span><i></i></summary><p data-i18n="faq.3.a">Hayır. Yalnızca 15W çeker — bir LED ampulden daha az.</p></details>
+      <details class="faq-item reveal"><summary><span data-i18n="faq.4.q">Ne kadar sıcak tutar?</span><i></i></summary><p data-i18n="faq.4.a">Açık kaldığı sürece. İçeceğiniz fincandayken sabit 55°C'de kalır.</p></details>
+      <details class="faq-item reveal"><summary><span data-i18n="faq.5.q">Tüm gün açık kalabilir mi?</span><i></i></summary><p data-i18n="faq.5.a">Evet. Güvenle tüm gün açık bırakılacak şekilde tasarlandı.</p></details>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 10 — FINAL CLOSE / ORDER ============ -->
+  <section class="close" id="order">
+    <div class="close__bg" aria-hidden="true"></div>
+    <div class="close__inner reveal">
+      <p class="hero__eyebrow" data-i18n="close.eyebrow">SINIRLI İLK PARTİ</p>
+      <h2 class="close__title" data-i18n="close.h2">Bir Daha Asla Soğuk Kahve İçmeyin.</h2>
+      <p class="close__sub" data-i18n="close.sub">Her kahve molasını lüks bir ritüele dönüştürün.</p>
+
+      <div class="price">
+        <span class="price__old">₺2.400</span>
+        <span class="price__now">₺1.690</span>
+        <span class="price__tag" data-i18n="close.save">Lansman fiyatı</span>
+      </div>
+
+      <a href="#" class="btn btn--solid btn--xl" id="buyBtn" data-i18n="close.cta">Kahvemi Sıcak Tut →</a>
+
+      <ul class="close__trust">
+        <li data-i18n="close.t1">✓ Ücretsiz & hızlı kargo</li>
+        <li data-i18n="close.t2">✓ 30 gün koşulsuz iade</li>
+        <li data-i18n="close.t3">✓ 2 yıl garanti</li>
+      </ul>
+
+      <p class="close__stock"><span class="dot"></span><span data-i18n="close.stock">Bu partide yalnızca 47 adet kaldı</span></p>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="footer__brand">EREVDECO</div>
+    <p data-i18n="footer.tag">Günlük ritüelleriniz için yapılmış lüks objeler.</p>
+    <div class="footer__links">
+      <a href="#why" data-i18n="nav.why">Neden Mermer</a>
+      <a href="#features" data-i18n="nav.features">Özellikler</a>
+      <a href="#faq" data-i18n="nav.faq">SSS</a>
+      <a href="#order" data-i18n="nav.cta">Satın Al</a>
+    </div>
+    <p class="footer__copy">© 2026 EREVDECO. <span data-i18n="footer.rights">Tüm hakları saklıdır.</span></p>
+  </footer>
+
+  <!-- ============ STICKY MOBILE CTA ============ -->
+  <a href="#order" class="sticky-cta" id="stickyCta">
+    <span class="sticky-cta__price">₺1.690</span>
+    <span class="sticky-cta__label" data-i18n="sticky.cta">Kahvemi Sıcak Tut →</span>
+  </a>
+
+  <!-- ============ EXIT INTENT MODAL ============ -->
+  <div class="modal" id="exitModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel">
+      <button class="modal__x" data-close aria-label="Close">×</button>
+      <p class="kicker" data-i18n="exit.kicker">GİTMEDEN ÖNCE</p>
+      <h3 data-i18n="exit.h">İlk siparişinizde %10 indirim.</h3>
+      <p data-i18n="exit.b">Kahveniz size teşekkür edecek. Kod anında uygulanır.</p>
+      <div class="modal__code" id="exitCode">EREV10</div>
+      <a href="#order" class="btn btn--solid" data-close data-i18n="exit.cta">İndirimi Kullan</a>
+    </div>
+  </div>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
