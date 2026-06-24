@@ -13,6 +13,10 @@
       var key = el.getAttribute("data-i18n");
       if (dict[key] != null) el.textContent = dict[key];
     });
+    document.querySelectorAll("[data-i18n-ph]").forEach(function (el) {
+      var key = el.getAttribute("data-i18n-ph");
+      if (dict[key] != null) el.setAttribute("placeholder", dict[key]);
+    });
     document.querySelectorAll(".lang-toggle__opt").forEach(function (o) {
       o.classList.toggle("is-active", o.getAttribute("data-lang") === lang);
     });
@@ -56,6 +60,8 @@
     layers.forEach(function (li) {
       li.classList.toggle("is-active", parseInt(li.getAttribute("data-layer"), 10) === activeLayer);
     });
+    var dots = document.querySelectorAll("#anatDots i");
+    dots.forEach(function (d, i) { d.classList.toggle("is-on", i === phase); });
     setCaption(phase);
   }
   function initAnatomy() {
@@ -195,15 +201,110 @@
     applyLang(saved);
   }
 
+  /* ---------- Intro preloader ---------- */
+  function initIntro() {
+    var intro = document.getElementById("intro");
+    if (!intro) return;
+    var seen = false;
+    try { seen = sessionStorage.getItem("erev_intro") === "1"; } catch (e) {}
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+    if (seen || reduce) { intro.classList.add("is-done"); return; }
+    document.body.style.overflow = "hidden";
+    setTimeout(function () {
+      intro.classList.add("is-done");
+      document.body.style.overflow = "";
+      try { sessionStorage.setItem("erev_intro", "1"); } catch (e) {}
+    }, 1700);
+  }
+
+  /* ---------- Marble configurator ---------- */
+  function initConfig() {
+    var swatches = document.querySelectorAll(".swatch");
+    if (!swatches.length) return;
+    var saved = null;
+    try { saved = localStorage.getItem("erev_marble"); } catch (e) {}
+    function set(marble) {
+      if (marble && marble !== "calacatta") document.body.setAttribute("data-marble", marble);
+      else document.body.removeAttribute("data-marble");
+      swatches.forEach(function (s) { s.classList.toggle("is-active", s.getAttribute("data-marble") === (marble || "calacatta")); });
+      try { localStorage.setItem("erev_marble", marble || "calacatta"); } catch (e) {}
+    }
+    swatches.forEach(function (s) {
+      s.addEventListener("click", function () { set(s.getAttribute("data-marble")); });
+    });
+    if (saved) set(saved);
+  }
+
+  /* ---------- Count-up stats ---------- */
+  function initStats() {
+    var nums = document.querySelectorAll(".stat__num");
+    if (!nums.length) return;
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+    function run(el) {
+      var target = parseFloat(el.getAttribute("data-num"));
+      var dec = parseInt(el.getAttribute("data-dec") || "0", 10);
+      var suffix = el.getAttribute("data-suffix") || "";
+      if (reduce) { el.textContent = target.toFixed(dec) + suffix; return; }
+      var start = null, dur = 1400;
+      function step(ts) {
+        if (!start) start = ts;
+        var p = Math.min(1, (ts - start) / dur);
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = (target * eased).toFixed(dec) + suffix;
+        if (p < 1) requestAnimationFrame(step);
+        else el.textContent = target.toFixed(dec) + suffix;
+      }
+      requestAnimationFrame(step);
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) { run(en.target); io.unobserve(en.target); } });
+    }, { threshold: 0.6 });
+    nums.forEach(function (n) { io.observe(n); });
+  }
+
+  /* ---------- Magnetic buttons ---------- */
+  function initMagnetic() {
+    if (!window.matchMedia || !window.matchMedia("(pointer:fine)").matches) return;
+    document.querySelectorAll(".btn--solid, .btn--xl").forEach(function (btn) {
+      btn.addEventListener("mousemove", function (e) {
+        var r = btn.getBoundingClientRect();
+        var mx = e.clientX - r.left - r.width / 2;
+        var my = e.clientY - r.top - r.height / 2;
+        btn.style.transform = "translate(" + mx * 0.18 + "px," + my * 0.28 + "px)";
+      });
+      btn.addEventListener("mouseleave", function () { btn.style.transform = ""; });
+    });
+  }
+
+  /* ---------- Newsletter ---------- */
+  function initNewsletter() {
+    var form = document.getElementById("newsletter");
+    if (!form) return;
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var input = document.getElementById("nlEmail");
+      if (input && input.value && input.value.indexOf("@") > 0) {
+        var dict = window.I18N[state.lang];
+        toast((dict && dict["footer.nl.ok"]) || "Thanks!");
+        input.value = "";
+      }
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
+    initIntro();
     initLang();
+    initConfig();
     initReveal();
     initAnatomy();
+    initStats();
     initScroll();
     initCursorLight();
+    initMagnetic();
     initSticky();
     initExit();
     initBuy();
+    initNewsletter();
     initAnchors();
   });
 })();

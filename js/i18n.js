@@ -17,6 +17,26 @@ window.I18N = {
     "hero.t3": "55°C Sabit Sıcaklık",
     "hero.t4": "Ücretsiz Kargo",
     "hero.scroll": "Kaydır",
+    "hero.marble": "Mermerini seç",
+
+    "stat.1": "Sabit sıcaklık",
+    "stat.2": "USB-C ile güç",
+    "stat.3": "Mermer ağırlığı",
+    "stat.4": "1.284 değerlendirme",
+
+    "compare.kicker": "KARŞILAŞTIRMA",
+    "compare.h2": "Aradaki farkı bir kez görün.",
+    "compare.other": "Sıradan ısıtıcı",
+    "compare.r1": "Doğal mermer yüzey",
+    "compare.r2": "USB-C ile çalışır",
+    "compare.r3": "Sessiz, fansız çalışma",
+    "compare.r4": "Masaüstü tasarım objesi",
+    "compare.r5": "Otomatik kapanma sensörü",
+    "compare.r6": "Her parçası benzersiz",
+
+    "footer.nl.ph": "ornek@eposta.com",
+    "footer.nl.cta": "Haberdar Et",
+    "footer.nl.ok": "Teşekkürler — ilk partiden haberdar olacaksınız.",
 
     "marquee": "Saatlerce Sıcak · Doğal Mermer · USB-C Güç · El Yapımı · 55°C Sabit · Sessiz · ",
 
@@ -145,6 +165,26 @@ window.I18N = {
     "hero.t3": "Steady 55°C",
     "hero.t4": "Free Shipping",
     "hero.scroll": "Scroll",
+    "hero.marble": "Choose your marble",
+
+    "stat.1": "Steady temperature",
+    "stat.2": "Powered over USB-C",
+    "stat.3": "Marble weight",
+    "stat.4": "1,284 reviews",
+
+    "compare.kicker": "COMPARISON",
+    "compare.h2": "See the difference once.",
+    "compare.other": "Ordinary warmer",
+    "compare.r1": "Natural marble surface",
+    "compare.r2": "Runs on USB-C",
+    "compare.r3": "Silent, fanless operation",
+    "compare.r4": "A desktop design object",
+    "compare.r5": "Auto-shutoff sensor",
+    "compare.r6": "Every piece unique",
+
+    "footer.nl.ph": "you@email.com",
+    "footer.nl.cta": "Keep Me Posted",
+    "footer.nl.ok": "Thank you — you'll hear about the first batch.",
 
     "marquee": "Warm for Hours · Natural Marble · USB-C Power · Handcrafted · Steady 55°C · Silent · ",
 

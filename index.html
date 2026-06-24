@@ -24,6 +24,14 @@
 </head>
 <body>
 
+  <!-- ===== INTRO PRELOADER ===== -->
+  <div class="intro" id="intro" aria-hidden="true">
+    <div class="intro__inner">
+      <span class="intro__mark">EREVDECO</span>
+      <span class="intro__line"><i></i></span>
+    </div>
+  </div>
+
   <!-- ===== Reusable SVG defs: marble filters, gradients ===== -->
   <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
     <defs>
@@ -39,9 +47,9 @@
         <feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.05 0"/>
       </filter>
       <radialGradient id="discTop" cx="34%" cy="26%" r="78%">
-        <stop offset="0%" stop-color="#fcfaf7"/>
-        <stop offset="55%" stop-color="#efe9e0"/>
-        <stop offset="100%" stop-color="#ddd3c6"/>
+        <stop offset="0%" stop-color="var(--m1)"/>
+        <stop offset="55%" stop-color="var(--m2)"/>
+        <stop offset="100%" stop-color="var(--m3)"/>
       </radialGradient>
       <radialGradient id="heatGrad" cx="50%" cy="50%" r="50%">
         <stop offset="0%" stop-color="rgba(201,168,106,.85)"/>
@@ -94,6 +102,24 @@
         <li><i class="tick"></i><span data-i18n="hero.t3">55°C Sabit Sıcaklık</span></li>
         <li><i class="tick"></i><span data-i18n="hero.t4">Ücretsiz Kargo</span></li>
       </ul>
+
+      <div class="config" role="group" aria-label="Marble selector">
+        <span class="config__label" data-i18n="hero.marble">Mermerini seç</span>
+        <div class="config__swatches">
+          <button class="swatch is-active" data-marble="calacatta" aria-label="Calacatta">
+            <span class="swatch__chip swatch__chip--calacatta"></span>
+            <span class="swatch__name">Calacatta</span>
+          </button>
+          <button class="swatch" data-marble="nero" aria-label="Nero Marquina">
+            <span class="swatch__chip swatch__chip--nero"></span>
+            <span class="swatch__name">Nero</span>
+          </button>
+          <button class="swatch" data-marble="emperador" aria-label="Emperador">
+            <span class="swatch__chip swatch__chip--emperador"></span>
+            <span class="swatch__name">Emperador</span>
+          </button>
+        </div>
+      </div>
     </div>
 
     <!-- bespoke product render -->
@@ -134,7 +160,7 @@
             <rect x="120" y="496" width="400" height="128" filter="url(#marbleClouds)" opacity=".7"/>
             <rect x="120" y="496" width="400" height="128" filter="url(#grain)"/>
             <!-- hand-drawn marble veins -->
-            <g class="veins" stroke="#9a8e79" fill="none" stroke-linecap="round">
+            <g class="veins" stroke="var(--vein)" fill="none" stroke-linecap="round">
               <path d="M150 542 q70 -20 150 6 q90 30 200 -4" stroke-width="2" opacity=".55"/>
               <path d="M170 580 q90 26 180 4 q70 -16 150 10" stroke-width="1.4" opacity=".45"/>
               <path d="M210 528 q40 30 30 70" stroke-width="1.2" opacity=".4"/>
@@ -146,8 +172,11 @@
           <!-- soft glow ring (active heat) -->
           <ellipse class="disc__glow" cx="320" cy="560" rx="120" ry="38" fill="none" stroke="url(#heatGrad)" stroke-width="10"/>
         </g>
-        <!-- ground shadow -->
-        <ellipse class="ground" cx="320" cy="660" rx="210" ry="30" fill="rgba(21,21,21,.12)"/>
+        <!-- floor reflection -->
+        <ellipse class="reflection-disc" cx="320" cy="636" rx="184" ry="40" fill="url(#discTop)" opacity=".12"/>
+        <!-- contact + ground shadow -->
+        <ellipse class="ground" cx="320" cy="618" rx="170" ry="20" fill="rgba(21,21,21,.16)"/>
+        <ellipse class="ground" cx="320" cy="660" rx="214" ry="30" fill="rgba(21,21,21,.07)"/>
       </svg>
     </div>
 
@@ -163,6 +192,14 @@
       <span data-i18n="marquee">Saatlerce Sıcak · Doğal Mermer · USB-C Güç · El Yapımı · 55°C Sabit · Sessiz · </span>
     </div>
   </div>
+
+  <!-- ===== STAT BAND ===== -->
+  <section class="stats reveal">
+    <div class="stat"><span class="stat__num" data-num="55" data-suffix="°C">0</span><span class="stat__lbl" data-i18n="stat.1">Sabit sıcaklık</span></div>
+    <div class="stat"><span class="stat__num" data-num="15" data-suffix="W">0</span><span class="stat__lbl" data-i18n="stat.2">USB-C ile güç</span></div>
+    <div class="stat"><span class="stat__num" data-num="480" data-suffix="g">0</span><span class="stat__lbl" data-i18n="stat.3">Mermer ağırlığı</span></div>
+    <div class="stat"><span class="stat__num" data-num="4.9" data-dec="1" data-suffix="★">0</span><span class="stat__lbl" data-i18n="stat.4">1.284 değerlendirme</span></div>
+  </section>
 
   <!-- ===== ANATOMY — pinned scroll storytelling ===== -->
   <section class="anatomy" id="anatomi">
@@ -210,7 +247,7 @@
             <g class="lay" id="layMarble">
               <path d="M150 250 q0 -40 70 -40 q70 0 70 40 v6 q0 8 -70 8 q-70 0 -70 -8 z"
                     fill="url(#discTop)" stroke="#1f1f1f" stroke-width="1.4"/>
-              <g stroke="#9a8e79" stroke-width="1" fill="none" opacity=".6">
+              <g stroke="var(--vein)" stroke-width="1" fill="none" opacity=".6">
                 <path d="M168 232 q40 -14 90 4"/><path d="M180 244 q30 8 80 -2"/>
               </g>
             </g>
@@ -237,6 +274,9 @@
             <li class="layer" data-layer="5"><b data-i18n="anat.l5.t">USB-C Güç Modülü</b><span data-i18n="anat.l5.b">Tek kabloyla 15W. Adaptör derdi yok.</span></li>
           </ol>
         </aside>
+      </div>
+      <div class="anatomy__dots" id="anatDots" aria-hidden="true">
+        <i class="is-on"></i><i></i><i></i><i></i><i></i><i></i>
       </div>
       <div class="anatomy__cue"><span data-i18n="anat.scrollcue">İncelemek için kaydır</span></div>
     </div>
@@ -447,6 +487,27 @@
     </div>
   </section>
 
+  <!-- ===== COMPARISON ===== -->
+  <section class="compare section">
+    <div class="section__head reveal">
+      <p class="kicker" data-i18n="compare.kicker">KARŞILAŞTIRMA</p>
+      <h2 class="display" data-i18n="compare.h2">Aradaki farkı bir kez görün.</h2>
+    </div>
+    <div class="compare__grid reveal">
+      <div class="compare__row compare__row--head">
+        <span></span>
+        <span class="compare__col compare__col--erev">EREVDECO</span>
+        <span class="compare__col" data-i18n="compare.other">Sıradan ısıtıcı</span>
+      </div>
+      <div class="compare__row"><span data-i18n="compare.r1">Doğal mermer yüzey</span><b class="yes"></b><b class="no"></b></div>
+      <div class="compare__row"><span data-i18n="compare.r2">USB-C ile çalışır</span><b class="yes"></b><b class="no"></b></div>
+      <div class="compare__row"><span data-i18n="compare.r3">Sessiz, fansız çalışma</span><b class="yes"></b><b class="no"></b></div>
+      <div class="compare__row"><span data-i18n="compare.r4">Masaüstü tasarım objesi</span><b class="yes"></b><b class="no"></b></div>
+      <div class="compare__row"><span data-i18n="compare.r5">Otomatik kapanma sensörü</span><b class="yes"></b><b class="no"></b></div>
+      <div class="compare__row"><span data-i18n="compare.r6">Her parçası benzersiz</span><b class="yes"></b><b class="no"></b></div>
+    </div>
+  </section>
+
   <!-- ===== FEATURES — bespoke line icons ===== -->
   <section class="features section">
     <div class="section__head reveal">
@@ -507,7 +568,7 @@
           <rect width="360" height="440" fill="url(#discTop)"/>
           <rect width="360" height="440" filter="url(#marbleClouds)" opacity=".8"/>
           <rect width="360" height="440" filter="url(#grain)"/>
-          <g class="veins" stroke="#9a8e79" fill="none" stroke-linecap="round">
+          <g class="veins" stroke="var(--vein)" fill="none" stroke-linecap="round">
             <path d="M20 120 q120 -50 200 20 q80 60 130 10" stroke-width="2.4" opacity=".5"/>
             <path d="M-10 240 q150 60 280 -10 q60 -32 110 8" stroke-width="1.8" opacity=".45"/>
             <path d="M60 60 q40 120 -10 200 q-30 50 10 110" stroke-width="1.4" opacity=".4"/>
@@ -590,6 +651,10 @@
   <footer class="footer">
     <div class="footer__brand">EREVDECO</div>
     <p data-i18n="footer.tag">Günlük ritüelleriniz için yapılmış masaüstü objeler.</p>
+    <form class="newsletter" id="newsletter" novalidate>
+      <input type="email" class="newsletter__input" id="nlEmail" placeholder="ornek@eposta.com" data-i18n-ph="footer.nl.ph" aria-label="E-posta" required />
+      <button type="submit" class="btn btn--solid newsletter__btn" data-i18n="footer.nl.cta">Haberdar Et</button>
+    </form>
     <div class="footer__links">
       <a href="#anatomi" data-i18n="nav.anat">Anatomi</a>
       <a href="#usbc" data-i18n="nav.usbc">USB-C</a>
