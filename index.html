@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <meta name="theme-color" content="#FFFFFF" />
-  <title>EREVDECO — Mermer Isıtmalı Bardak Altlığı | Marble Heated Coaster</title>
-  <meta name="description" content="El yapımı mermer ısıtmalı bardak altlığı. Kahveniz saatlerce sıcak kalsın, masanız bir sanat eserine dönüşsün. A handcrafted marble heated coaster that keeps your coffee warm for hours." />
+  <title>EREVDECO — Mermer Sıcak Tutucu | Marble Heated Coaster</title>
+  <meta name="description" content="El yapımı doğal mermerden USB-C ile çalışan premium kahve ve çay sıcak tutucu. A handcrafted natural-marble, USB-C powered coffee & tea warmer." />
 
-  <meta property="og:title" content="EREVDECO — Your Coffee Deserves More Than 10 Minutes." />
-  <meta property="og:description" content="A handcrafted marble heated coaster designed to keep your favorite drink warm while elevating your space." />
+  <meta property="og:title" content="EREVDECO — Kahveniz Son Yuduma Kadar Sıcak." />
+  <meta property="og:description" content="El işçiliğiyle üretilmiş doğal mermer sıcak tutucu. USB-C gücüyle ideal sıcaklıkta korur." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://erevdeco.com" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -16,32 +16,55 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
-
   <link rel="stylesheet" href="css/style.css" />
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "EREVDECO Marble Heated Coaster",
-    "description": "A handcrafted marble heated coaster that keeps coffee, tea and hot beverages warm for hours.",
-    "brand": { "@type": "Brand", "name": "EREVDECO" },
-    "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "1284" }
-  }
+  {"@context":"https://schema.org","@type":"Product","name":"EREVDECO Marble Heated Coaster","description":"A handcrafted natural-marble, USB-C powered coffee and tea warmer.","brand":{"@type":"Brand","name":"EREVDECO"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1284"}}
   </script>
 </head>
 <body>
 
-  <!-- ============ PROGRESS BAR ============ -->
-  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <!-- ===== Reusable SVG defs: marble filters, gradients ===== -->
+  <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <!-- procedural marble: soft clouds -->
+      <filter id="marbleClouds" x="-30%" y="-30%" width="160%" height="160%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="4" seed="14" result="n"/>
+        <feColorMatrix in="n" type="matrix"
+          values="0 0 0 0 0.44  0 0 0 0 0.41  0 0 0 0 0.36  0 0 0 0.55 0"/>
+      </filter>
+      <!-- fine stone grain -->
+      <filter id="grain" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" result="g"/>
+        <feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.05 0"/>
+      </filter>
+      <radialGradient id="discTop" cx="34%" cy="26%" r="78%">
+        <stop offset="0%" stop-color="#fcfaf7"/>
+        <stop offset="55%" stop-color="#efe9e0"/>
+        <stop offset="100%" stop-color="#ddd3c6"/>
+      </radialGradient>
+      <radialGradient id="heatGrad" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="rgba(201,168,106,.85)"/>
+        <stop offset="100%" stop-color="rgba(201,168,106,0)"/>
+      </radialGradient>
+      <linearGradient id="mugGrad" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#ffffff"/>
+        <stop offset="60%" stop-color="#ece6dd"/>
+        <stop offset="100%" stop-color="#d6cdc0"/>
+      </linearGradient>
+    </defs>
+  </svg>
 
-  <!-- ============ NAV ============ -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <div class="cursor-light" id="cursorLight" aria-hidden="true"></div>
+
+  <!-- ===== NAV ===== -->
   <header class="nav" id="nav">
-    <a href="#top" class="nav__brand" aria-label="EREVDECO">EREVDECO</a>
+    <a href="#top" class="nav__brand">EREVDECO</a>
     <nav class="nav__links" aria-label="Primary">
-      <a href="#why" data-i18n="nav.why">Neden Mermer</a>
-      <a href="#features" data-i18n="nav.features">Özellikler</a>
-      <a href="#specs" data-i18n="nav.specs">Teknik</a>
+      <a href="#anatomi" data-i18n="nav.anat">Anatomi</a>
+      <a href="#usbc" data-i18n="nav.usbc">USB-C</a>
+      <a href="#mermer" data-i18n="nav.marble">Mermer</a>
       <a href="#faq" data-i18n="nav.faq">SSS</a>
     </nav>
     <div class="nav__actions">
@@ -54,203 +77,450 @@
     </div>
   </header>
 
-  <!-- ============ HERO ============ -->
+  <!-- ===== HERO ===== -->
   <section class="hero" id="top">
     <div class="hero__bg" aria-hidden="true"></div>
     <div class="hero__inner">
-      <p class="hero__eyebrow" data-i18n="hero.eyebrow">EL YAPIMI · DOĞAL MERMER</p>
-
-      <h1 class="hero__title">
-        <span class="rotator" id="rotator" aria-live="polite">
-          <span class="rotator__item is-active" data-i18n="hero.h1">Kahveniz 10 Dakikadan Fazlasını Hak Ediyor.</span>
-        </span>
-      </h1>
-
-      <p class="hero__sub" data-i18n="hero.sub">
-        El işçiliğiyle yontulmuş mermer ısıtmalı bir altlık — en sevdiğiniz içeceği sıcak tutarken mekânınızı yükseltir.
-      </p>
-
+      <p class="hero__eyebrow" data-i18n="hero.eyebrow">EL YAPIMI · DOĞAL MERMER · USB-C</p>
+      <h1 class="hero__title" data-i18n="hero.h1">Kahveniz Son Yuduma Kadar Sıcak.</h1>
+      <p class="hero__sub" data-i18n="hero.sub">El işçiliğiyle üretilmiş doğal mermer sıcak tutucu. USB-C gücüyle içeceğinizi ideal sıcaklıkta korur.</p>
       <div class="hero__cta">
-        <a href="#order" class="btn btn--solid" data-i18n="hero.cta1">Kahvemi Sıcak Tut</a>
-        <a href="#how" class="btn btn--text" data-i18n="hero.cta2">Nasıl Çalışır →</a>
+        <a href="#order" class="btn btn--solid" data-i18n="hero.cta1">Sıcak Tutmaya Başla</a>
+        <a href="#anatomi" class="btn btn--text" data-i18n="hero.cta2">Nasıl Çalıştığını Gör →</a>
       </div>
-
-      <div class="hero__trust">
-        <span class="stars" aria-hidden="true">★★★★★</span>
-        <span data-i18n="hero.trust">1.284 ev sahibi tarafından sevildi · Ücretsiz kargo</span>
-      </div>
+      <ul class="hero__ticks">
+        <li><i class="tick"></i><span data-i18n="hero.t1">Doğal Mermer</span></li>
+        <li><i class="tick"></i><span data-i18n="hero.t2">USB-C Güç</span></li>
+        <li><i class="tick"></i><span data-i18n="hero.t3">55°C Sabit Sıcaklık</span></li>
+        <li><i class="tick"></i><span data-i18n="hero.t4">Ücretsiz Kargo</span></li>
+      </ul>
     </div>
 
-    <!-- The product object -->
-    <div class="stage" id="stage" aria-hidden="true">
-      <div class="steam">
-        <span></span><span></span><span></span>
-      </div>
-      <div class="mug">
-        <div class="mug__body"></div>
-        <div class="mug__handle"></div>
-        <div class="mug__coffee"></div>
-      </div>
-      <div class="coaster">
-        <div class="coaster__top"></div>
-        <div class="coaster__glow"></div>
-        <div class="coaster__side"></div>
-      </div>
-      <div class="stage__shadow"></div>
+    <!-- bespoke product render -->
+    <div class="hero__stage" id="heroStage" aria-hidden="true">
+      <svg class="product" viewBox="0 0 620 760" id="productSvg">
+        <!-- light refraction -->
+        <ellipse class="refraction" cx="250" cy="250" rx="190" ry="150"/>
+        <!-- steam -->
+        <g class="steam" stroke="#fff" stroke-width="9" stroke-linecap="round" fill="none" opacity=".75">
+          <path class="steam__p s1" d="M286 250 q-26 -34 0 -68 q26 -34 0 -68"/>
+          <path class="steam__p s2" d="M320 250 q26 -36 0 -72 q-26 -36 0 -72"/>
+          <path class="steam__p s3" d="M352 250 q-22 -32 0 -64 q22 -32 0 -64"/>
+        </g>
+        <!-- mug -->
+        <g class="mug">
+          <path class="mug__handle" d="M404 360 q66 6 66 70 q0 64 -66 70" fill="none" stroke="#e2dbd0" stroke-width="20"/>
+          <path class="mug__body" d="M250 350 h160 l-12 168 q-2 26 -68 26 q-66 0 -68 -26 z" fill="url(#mugGrad)"/>
+          <ellipse class="mug__rim" cx="330" cy="350" rx="80" ry="22" fill="#f3efe8"/>
+          <ellipse class="mug__coffee" cx="330" cy="350" rx="64" ry="16" fill="#3a2316"/>
+          <ellipse class="mug__coffee-spec" cx="312" cy="345" rx="22" ry="6" fill="#5d3a23" opacity=".7"/>
+        </g>
+        <!-- heat halo between mug & disc -->
+        <ellipse class="heat-halo" cx="320" cy="556" rx="150" ry="40" fill="url(#heatGrad)"/>
+        <!-- coaster disc -->
+        <g class="disc">
+          <!-- side / thickness -->
+          <path class="disc__side" d="M120 560 a200 64 0 0 0 400 0 v34 a200 64 0 0 1 -400 0 z" fill="#cfc5b6"/>
+          <!-- USB-C port on the side -->
+          <g class="usbc-port">
+            <rect x="500" y="572" width="40" height="16" rx="8" fill="#b3a896"/>
+            <rect x="507" y="577" width="26" height="6" rx="3" fill="#7c715f"/>
+          </g>
+          <!-- top face -->
+          <ellipse class="disc__top" cx="320" cy="560" rx="200" ry="64" fill="url(#discTop)"/>
+          <!-- marble clouds clipped to top -->
+          <clipPath id="discClip"><ellipse cx="320" cy="560" rx="200" ry="64"/></clipPath>
+          <g clip-path="url(#discClip)">
+            <rect x="120" y="496" width="400" height="128" filter="url(#marbleClouds)" opacity=".7"/>
+            <rect x="120" y="496" width="400" height="128" filter="url(#grain)"/>
+            <!-- hand-drawn marble veins -->
+            <g class="veins" stroke="#9a8e79" fill="none" stroke-linecap="round">
+              <path d="M150 542 q70 -20 150 6 q90 30 200 -4" stroke-width="2" opacity=".55"/>
+              <path d="M170 580 q90 26 180 4 q70 -16 150 10" stroke-width="1.4" opacity=".45"/>
+              <path d="M210 528 q40 30 30 70" stroke-width="1.2" opacity=".4"/>
+              <path d="M380 596 q26 -34 70 -40" stroke-width="1.2" opacity=".4"/>
+            </g>
+          </g>
+          <!-- rim highlight -->
+          <ellipse cx="320" cy="560" rx="200" ry="64" fill="none" stroke="#fff" stroke-width="1.5" opacity=".5"/>
+          <!-- soft glow ring (active heat) -->
+          <ellipse class="disc__glow" cx="320" cy="560" rx="120" ry="38" fill="none" stroke="url(#heatGrad)" stroke-width="10"/>
+        </g>
+        <!-- ground shadow -->
+        <ellipse class="ground" cx="320" cy="660" rx="210" ry="30" fill="rgba(21,21,21,.12)"/>
+      </svg>
     </div>
 
-    <div class="hero__scrollcue" aria-hidden="true">
-      <span data-i18n="hero.scroll">Kaydır</span>
-      <i></i>
-    </div>
+    <a href="#anatomi" class="hero__scrollcue" aria-label="Scroll">
+      <span data-i18n="hero.scroll">Kaydır</span><i></i>
+    </a>
   </section>
 
-  <!-- ============ MARQUEE ============ -->
+  <!-- ===== MARQUEE ===== -->
   <div class="marquee" aria-hidden="true">
     <div class="marquee__track">
-      <span data-i18n="marquee">Saatlerce Sıcak · Doğal Mermer · Sessiz Çalışma · El Yapımı · Hediyeye Hazır · Enerji Dostu ·</span>
-      <span data-i18n="marquee">Saatlerce Sıcak · Doğal Mermer · Sessiz Çalışma · El Yapımı · Hediyeye Hazır · Enerji Dostu ·</span>
+      <span data-i18n="marquee">Saatlerce Sıcak · Doğal Mermer · USB-C Güç · El Yapımı · 55°C Sabit · Sessiz · </span>
+      <span data-i18n="marquee">Saatlerce Sıcak · Doğal Mermer · USB-C Güç · El Yapımı · 55°C Sabit · Sessiz · </span>
     </div>
   </div>
 
-  <!-- ============ HOW IT WORKS / SCROLL STORY ============ -->
-  <section class="story" id="how">
-    <div class="story__sticky">
-      <div class="story__visual">
-        <div class="story-mug">
-          <div class="story-steam"><span></span><span></span><span></span></div>
-          <div class="story-mug__body"></div>
-          <div class="story-mug__handle"></div>
+  <!-- ===== ANATOMY — pinned scroll storytelling ===== -->
+  <section class="anatomy" id="anatomi">
+    <div class="anatomy__sticky">
+      <div class="anatomy__grid">
+        <div class="anatomy__stage">
+          <svg class="xsec" viewBox="0 188 440 252" id="xsec" aria-hidden="true">
+            <!-- ground line -->
+            <line x1="60" y1="412" x2="380" y2="412" stroke="#1515151a" stroke-width="1"/>
+            <!-- L5 USB-C module -->
+            <g class="lay" id="layUsb">
+              <rect x="150" y="372" width="140" height="30" rx="8" fill="none" stroke="#1f1f1f" stroke-width="1.4"/>
+              <path class="usb-cable" d="M290 387 h70" fill="none" stroke="#1f1f1f" stroke-width="1.4"/>
+              <rect x="360" y="380" width="24" height="14" rx="4" fill="none" stroke="#1f1f1f" stroke-width="1.4"/>
+              <!-- power flow -->
+              <path class="power-flow" d="M384 387 h-94 M150 387 h70" fill="none" stroke="#C9A86A" stroke-width="2" stroke-linecap="round"/>
+            </g>
+            <!-- L4 sensor -->
+            <g class="lay" id="laySensor">
+              <rect x="150" y="338" width="140" height="22" rx="6" fill="none" stroke="#1f1f1f" stroke-width="1.4"/>
+              <circle cx="220" cy="349" r="7" fill="none" stroke="#1f1f1f" stroke-width="1.4"/>
+              <circle cx="220" cy="349" r="2" fill="#1f1f1f"/>
+            </g>
+            <!-- L3 heating element / coil -->
+            <g class="lay" id="layCoil">
+              <rect x="150" y="300" width="140" height="26" rx="6" fill="none" stroke="#1f1f1f" stroke-width="1.4"/>
+              <path class="coil" d="M162 313 q10 -12 20 0 q10 12 20 0 q10 -12 20 0 q10 12 20 0 q10 -12 20 0 q10 12 20 0 q10 -12 20 0"
+                    fill="none" stroke="#1f1f1f" stroke-width="1.6"/>
+            </g>
+            <!-- L2 heat plate -->
+            <g class="lay" id="layPlate">
+              <rect x="150" y="270" width="140" height="18" rx="5" fill="none" stroke="#1f1f1f" stroke-width="1.4"/>
+              <g stroke="#1f1f1f" stroke-width="0.8" opacity=".6">
+                <line x1="158" y1="288" x2="166" y2="270"/><line x1="176" y1="288" x2="184" y2="270"/>
+                <line x1="194" y1="288" x2="202" y2="270"/><line x1="212" y1="288" x2="220" y2="270"/>
+                <line x1="230" y1="288" x2="238" y2="270"/><line x1="248" y1="288" x2="256" y2="270"/>
+                <line x1="266" y1="288" x2="274" y2="270"/>
+              </g>
+              <!-- heat waves rising -->
+              <g class="heat-waves" stroke="#C9A86A" stroke-width="1.6" fill="none" stroke-linecap="round">
+                <path d="M185 268 q8 -18 0 -36"/><path d="M220 268 q-8 -18 0 -36"/><path d="M255 268 q8 -18 0 -36"/>
+              </g>
+            </g>
+            <!-- L1 marble surface -->
+            <g class="lay" id="layMarble">
+              <path d="M150 250 q0 -40 70 -40 q70 0 70 40 v6 q0 8 -70 8 q-70 0 -70 -8 z"
+                    fill="url(#discTop)" stroke="#1f1f1f" stroke-width="1.4"/>
+              <g stroke="#9a8e79" stroke-width="1" fill="none" opacity=".6">
+                <path d="M168 232 q40 -14 90 4"/><path d="M180 244 q30 8 80 -2"/>
+              </g>
+            </g>
+            <!-- dimension annotation lines -->
+            <g class="annot" stroke="#15151533" stroke-width="0.8">
+              <line class="a1" x1="290" y1="230" x2="392" y2="230"/>
+              <line class="a2" x1="290" y1="279" x2="392" y2="279"/>
+              <line class="a3" x1="290" y1="313" x2="392" y2="313"/>
+              <line class="a4" x1="290" y1="349" x2="392" y2="349"/>
+              <line class="a5" x1="290" y1="387" x2="392" y2="387"/>
+            </g>
+          </svg>
+          <p class="anatomy__caption" id="anatCaption" data-i18n="anat.p0">Tek bir nesne. Görünmez bir sistem.</p>
         </div>
-        <div class="story-coaster"></div>
+
+        <aside class="anatomy__panel">
+          <p class="kicker" data-i18n="anat.kicker">ANATOMİ</p>
+          <h2 class="display" data-i18n="anat.h2">Bir taşın içine gizlenmiş mühendislik.</h2>
+          <ol class="layers">
+            <li class="layer" data-layer="1"><b data-i18n="anat.l1.t">Mermer Yüzey</b><span data-i18n="anat.l1.b">Tek parça doğal mermer. Her damar benzersiz.</span></li>
+            <li class="layer" data-layer="2"><b data-i18n="anat.l2.t">Isı Dağıtım Plakası</b><span data-i18n="anat.l2.b">Isıyı yüzeye eşit yayan iletken katman.</span></li>
+            <li class="layer" data-layer="3"><b data-i18n="anat.l3.t">Rezistans</b><span data-i18n="anat.l3.b">Sabit 55°C üreten hassas ısıtma elemanı.</span></li>
+            <li class="layer" data-layer="4"><b data-i18n="anat.l4.t">Sensör</b><span data-i18n="anat.l4.b">Sıcaklığı milisaniyede ölçer ve dengeler.</span></li>
+            <li class="layer" data-layer="5"><b data-i18n="anat.l5.t">USB-C Güç Modülü</b><span data-i18n="anat.l5.b">Tek kabloyla 15W. Adaptör derdi yok.</span></li>
+          </ol>
+        </aside>
       </div>
+      <div class="anatomy__cue"><span data-i18n="anat.scrollcue">İncelemek için kaydır</span></div>
     </div>
-    <div class="story__steps">
-      <div class="story-step" data-step="1">
-        <span class="story-step__num">01</span>
-        <h3 data-i18n="story.1.t">Yerleştir</h3>
-        <p data-i18n="story.1.b">Fincanınızı mermerin üzerine bırakın. Hepsi bu.</p>
-      </div>
-      <div class="story-step" data-step="2">
-        <span class="story-step__num">02</span>
-        <h3 data-i18n="story.2.t">Isınır</h3>
-        <p data-i18n="story.2.b">Sabit 55°C ile içeceğiniz ilk yudumdaki sıcaklığında kalır.</p>
-      </div>
-      <div class="story-step" data-step="3">
-        <span class="story-step__num">03</span>
-        <h3 data-i18n="story.3.t">Saatlerce Tadını Çıkar</h3>
-        <p data-i18n="story.3.b">Toplantılar, kitaplar, uzun çalışma seansları — her yudum mükemmel.</p>
-      </div>
-    </div>
+    <!-- scroll driver -->
+    <div class="anatomy__scroller" id="anatScroller"></div>
   </section>
 
-  <!-- ============ SECTION 1 — THE PROBLEM ============ -->
+  <!-- ===== PROBLEM — bespoke cooling chart ===== -->
   <section class="problem section" id="problem">
     <div class="section__head reveal">
       <p class="kicker" data-i18n="problem.kicker">SORUN</p>
-      <h2 class="display" data-i18n="problem.h2">İlk yudum mükemmel. Geri kalanı buz gibi.</h2>
+      <h2 class="display" data-i18n="problem.h2">İlk yudum mükemmel. 20 dakika sonra buz gibi.</h2>
     </div>
-    <div class="temp-scale reveal">
-      <div class="temp-scale__step is-hot">
-        <span class="temp-scale__deg">62°</span>
-        <span class="temp-scale__label" data-i18n="problem.hot">Sıcak</span>
-        <span class="temp-scale__time" data-i18n="problem.hot.t">0 dk</span>
-      </div>
-      <div class="temp-scale__line"></div>
-      <div class="temp-scale__step is-warm">
-        <span class="temp-scale__deg">41°</span>
-        <span class="temp-scale__label" data-i18n="problem.warm">Ilık</span>
-        <span class="temp-scale__time" data-i18n="problem.warm.t">10 dk</span>
-      </div>
-      <div class="temp-scale__line"></div>
-      <div class="temp-scale__step is-cold">
-        <span class="temp-scale__deg">23°</span>
-        <span class="temp-scale__label" data-i18n="problem.cold">Soğuk</span>
-        <span class="temp-scale__time" data-i18n="problem.cold.t">25 dk</span>
+    <div class="chart reveal">
+      <svg viewBox="0 0 640 360" class="chart__svg" id="chartSvg">
+        <!-- gridlines -->
+        <g stroke="#1515150d" stroke-width="1">
+          <line x1="70" y1="60" x2="600" y2="60"/>
+          <line x1="70" y1="120" x2="600" y2="120"/>
+          <line x1="70" y1="180" x2="600" y2="180"/>
+          <line x1="70" y1="240" x2="600" y2="240"/>
+          <line x1="70" y1="300" x2="600" y2="300"/>
+        </g>
+        <!-- axes -->
+        <line x1="70" y1="40" x2="70" y2="300" stroke="#15151533" stroke-width="1.2"/>
+        <line x1="70" y1="300" x2="600" y2="300" stroke="#15151533" stroke-width="1.2"/>
+        <!-- y labels -->
+        <g class="chart__lbl" fill="#15151588" font-size="12">
+          <text x="60" y="64" text-anchor="end">62°</text>
+          <text x="60" y="116" text-anchor="end">55°</text>
+          <text x="60" y="244" text-anchor="end">40°</text>
+          <text x="60" y="304" text-anchor="end">23°</text>
+        </g>
+        <!-- x labels -->
+        <g class="chart__lbl" fill="#15151588" font-size="12" text-anchor="middle">
+          <text x="70" y="322">0</text>
+          <text x="282" y="322">10</text>
+          <text x="494" y="322">20</text>
+          <text x="600" y="322">25</text>
+        </g>
+        <!-- EREVDECO area + line (flat ~55) -->
+        <path class="chart__area" d="M70 78 C100 96 120 112 160 112 L600 112 L600 300 L70 300 Z" fill="#C9A86A14"/>
+        <path class="chart__erev" d="M70 78 C100 96 120 112 160 112 L600 112"
+              fill="none" stroke="#C9A86A" stroke-width="3" stroke-linecap="round"/>
+        <!-- normal coffee decay -->
+        <path class="chart__normal" d="M70 78 C140 120 200 168 282 196 C360 222 470 250 600 262"
+              fill="none" stroke="#1f1f1f" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="2 7"/>
+        <!-- endpoint dots -->
+        <circle class="chart__dot dot-erev" cx="600" cy="112" r="5" fill="#C9A86A"/>
+        <circle class="chart__dot dot-normal" cx="600" cy="262" r="5" fill="#1f1f1f"/>
+      </svg>
+      <div class="chart__legend">
+        <span class="lg lg--normal"><i></i><span data-i18n="problem.normal">Sıradan kahve</span></span>
+        <span class="lg lg--erev"><i></i><span data-i18n="problem.erev">EREVDECO</span></span>
       </div>
     </div>
-    <div class="problem__list">
-      <p class="reveal" data-i18n="problem.p1">Kahve soğur.</p>
-      <p class="reveal" data-i18n="problem.p2">Çay aromasını kaybeder.</p>
-      <p class="reveal" data-i18n="problem.p3">Sürekli mikrodalgaya gidip gelirsiniz.</p>
-      <p class="reveal" data-i18n="problem.p4">Ve odağınız her seferinde bölünür.</p>
+    <div class="problem__notes">
+      <p class="reveal"><span class="problem__num">23°</span><span data-i18n="problem.note1">Sıradan kahve 20 dakikada içilmez hale gelir.</span></p>
+      <p class="reveal"><span class="problem__num problem__num--gold">55°</span><span data-i18n="problem.note2">EREVDECO 55°C'de sabit kalır — saatlerce.</span></p>
     </div>
   </section>
 
-  <!-- ============ SECTION 2 — TRANSFORMATION ============ -->
-  <section class="transform section--dark" id="transform">
-    <div class="transform__col transform__col--before reveal">
-      <p class="transform__tag" data-i18n="transform.before">ÖNCE</p>
-      <ul>
-        <li data-i18n="transform.b1">Soğumuş kahve</li>
-        <li data-i18n="transform.b2">Dağınık masa</li>
-        <li data-i18n="transform.b3">Bölünen odak</li>
-      </ul>
-    </div>
-    <div class="transform__divider" aria-hidden="true"></div>
-    <div class="transform__col transform__col--after reveal">
-      <p class="transform__tag transform__tag--gold" data-i18n="transform.after">SONRA</p>
-      <ul>
-        <li data-i18n="transform.a1">Sıcak içecek</li>
-        <li data-i18n="transform.a2">Lüks bir masa</li>
-        <li data-i18n="transform.a3">Sakin bir ritüel</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ============ SECTION 3 — WHY MARBLE ============ -->
-  <section class="why section" id="why">
-    <div class="why__text reveal">
-      <p class="kicker" data-i18n="why.kicker">NEDEN MERMER</p>
-      <h2 class="display" data-i18n="why.h2">Bir malzeme değil. Bir his.</h2>
-      <p class="why__lede" data-i18n="why.lede">Mermer ısıyı plastik veya metalin asla yapamayacağı şekilde tutar — yavaş, dengeli, zarif. Her parça benzersiz damarlara sahiptir; dünyada tam olarak sizinkinin eşi yoktur.</p>
-      <ul class="why__points">
-        <li class="reveal"><b data-i18n="why.p1.t">Üstün ısı tutma</b><span data-i18n="why.p1.b">Doğal taş ısıyı eşit dağıtır ve uzun süre saklar.</span></li>
-        <li class="reveal"><b data-i18n="why.p2.t">Zarif ağırlık</b><span data-i18n="why.p2.b">Elinizde hissettiğiniz an kalite belli olur.</span></li>
-        <li class="reveal"><b data-i18n="why.p3.t">Zamansız lüks</b><span data-i18n="why.p3.b">Trendler geçer. Mermer her zaman doğru kalır.</span></li>
-      </ul>
-    </div>
-    <div class="why__visual reveal">
-      <div class="marble-swatch"></div>
-    </div>
-  </section>
-
-  <!-- ============ SECTION 4 — FEATURES ============ -->
-  <section class="features section" id="features">
+  <!-- ===== USB-C ADVANTAGE — bespoke scenario line art ===== -->
+  <section class="usbc section--soft" id="usbc">
     <div class="section__head reveal">
-      <p class="kicker" data-i18n="features.kicker">ÖZELLİKLER</p>
+      <p class="kicker" data-i18n="usbc.kicker">USB-C AVANTAJI</p>
+      <h2 class="display" data-i18n="usbc.h2">Prize değil, hayatınıza bağlanır.</h2>
+      <p class="usbc__lede" data-i18n="usbc.lede">Tek bir USB-C kablo. Adaptör yok, karmaşa yok. Gücü zaten her yerde olan bir bağlantıdan alır.</p>
+    </div>
+    <div class="usbc__grid">
+      <article class="scene reveal">
+        <svg viewBox="0 0 200 150" class="scene__svg">
+          <!-- laptop -->
+          <path d="M60 96 h80 l10 24 h-100 z" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <rect x="64" y="58" width="72" height="40" rx="3" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <!-- coaster + mug -->
+          <ellipse cx="158" cy="118" rx="26" ry="8" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M146 110 h24 l-3 -20 h-18 z" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M170 94 q10 0 10 9 q0 9 -10 9" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <!-- cable -->
+          <path class="flow" d="M136 110 q12 6 22 4" fill="none" stroke="#C9A86A" stroke-width="1.6" stroke-dasharray="3 4"/>
+        </svg>
+        <h3 data-i18n="usbc.1.t">MacBook'un yanında</h3>
+        <p data-i18n="usbc.1.b">Dizüstünüzün portundan beslenir.</p>
+      </article>
+
+      <article class="scene reveal">
+        <svg viewBox="0 0 200 150" class="scene__svg">
+          <!-- powerbank -->
+          <rect x="40" y="64" width="44" height="64" rx="6" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="50" y1="74" x2="74" y2="74" stroke="currentColor" stroke-width="1.4"/>
+          <rect x="56" y="120" width="12" height="4" rx="2" fill="currentColor"/>
+          <!-- coaster + mug -->
+          <ellipse cx="148" cy="120" rx="26" ry="8" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M136 112 h24 l-3 -20 h-18 z" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M160 96 q10 0 10 9 q0 9 -10 9" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <path class="flow" d="M84 100 q30 8 38 14" fill="none" stroke="#C9A86A" stroke-width="1.6" stroke-dasharray="3 4"/>
+        </svg>
+        <h3 data-i18n="usbc.2.t">Powerbank ile</h3>
+        <p data-i18n="usbc.2.b">Elektrik olmayan her yerde sıcaklık.</p>
+      </article>
+
+      <article class="scene reveal">
+        <svg viewBox="0 0 200 150" class="scene__svg">
+          <!-- sun -->
+          <circle cx="56" cy="50" r="14" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <g stroke="currentColor" stroke-width="1.2"><line x1="56" y1="26" x2="56" y2="18"/><line x1="80" y1="50" x2="88" y2="50"/><line x1="73" y1="33" x2="79" y2="27"/></g>
+          <!-- plant -->
+          <path d="M150 124 q-2 -26 -16 -34 M150 124 q2 -22 18 -28" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <!-- table + coaster -->
+          <line x1="40" y1="124" x2="170" y2="124" stroke="currentColor" stroke-width="1.4"/>
+          <ellipse cx="92" cy="118" rx="24" ry="7" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M82 112 h20 l-3 -18 h-14 z" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <g class="flow" stroke="#C9A86A" stroke-width="1.4" fill="none"><path d="M92 90 q6 -10 0 -18"/></g>
+        </svg>
+        <h3 data-i18n="usbc.3.t">Bahçede</h3>
+        <p data-i18n="usbc.3.b">Açık havada, uzun sohbetlerde.</p>
+      </article>
+
+      <article class="scene reveal">
+        <svg viewBox="0 0 200 150" class="scene__svg">
+          <!-- monitor -->
+          <rect x="58" y="48" width="84" height="50" rx="3" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="100" y1="98" x2="100" y2="110" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="86" y1="110" x2="114" y2="110" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="34" y1="124" x2="172" y2="124" stroke="currentColor" stroke-width="1.4"/>
+          <!-- coaster + mug -->
+          <ellipse cx="150" cy="120" rx="22" ry="7" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M141 114 h18 l-3 -16 h-12 z" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <path class="flow" d="M142 78 q8 22 8 36" fill="none" stroke="#C9A86A" stroke-width="1.4" stroke-dasharray="3 4"/>
+        </svg>
+        <h3 data-i18n="usbc.4.t">Ofiste</h3>
+        <p data-i18n="usbc.4.b">Masanızın sessiz bir parçası.</p>
+      </article>
+
+      <article class="scene reveal">
+        <svg viewBox="0 0 200 150" class="scene__svg">
+          <!-- suitcase -->
+          <rect x="60" y="66" width="80" height="58" rx="6" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M86 66 v-10 h28 v10" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <line x1="100" y1="66" x2="100" y2="124" stroke="currentColor" stroke-width="1" opacity=".5"/>
+          <!-- coaster inside -->
+          <ellipse cx="82" cy="98" rx="14" ry="5" fill="none" stroke="#C9A86A" stroke-width="1.4"/>
+          <ellipse cx="120" cy="98" rx="9" ry="9" fill="none" stroke="currentColor" stroke-width="1.2"/>
+          <!-- motion arc -->
+          <path class="flow" d="M150 60 q24 6 22 34" fill="none" stroke="#C9A86A" stroke-width="1.4" stroke-dasharray="3 4"/>
+        </svg>
+        <h3 data-i18n="usbc.5.t">Seyahatte</h3>
+        <p data-i18n="usbc.5.b">Çantaya girer, her yere gider.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ===== MARBLE STORY ===== -->
+  <section class="marble section" id="mermer">
+    <div class="section__head reveal">
+      <p class="kicker" data-i18n="marble.kicker">MERMER HİKAYESİ</p>
+      <h2 class="display" data-i18n="marble.h2">Bir dağda başlar. Masanızda biter.</h2>
+    </div>
+    <div class="marble__track">
+      <div class="mstep reveal">
+        <span class="mstep__n">01</span>
+        <svg viewBox="0 0 160 120" class="mstep__svg">
+          <path d="M16 100 l34 -56 l24 30 l22 -40 l28 66 z" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <g stroke="currentColor" stroke-width="0.8" opacity=".5"><path d="M30 88 h96"/><path d="M40 76 h78"/><path d="M52 64 h54"/></g>
+          <path d="M118 40 l10 -10 m-4 -2 l8 8" stroke="currentColor" stroke-width="1.2" fill="none"/>
+        </svg>
+        <h3 data-i18n="marble.1.t">Maden</h3>
+        <p data-i18n="marble.1.b">Milyonlarca yılda oluşmuş doğal taş ocaktan çıkar.</p>
+      </div>
+      <div class="mline" aria-hidden="true"></div>
+      <div class="mstep reveal">
+        <span class="mstep__n">02</span>
+        <svg viewBox="0 0 160 120" class="mstep__svg">
+          <rect x="40" y="56" width="80" height="34" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <circle cx="80" cy="40" r="18" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <g stroke="currentColor" stroke-width="1"><line x1="80" y1="22" x2="80" y2="28"/><line x1="98" y1="40" x2="92" y2="40"/><line x1="62" y1="40" x2="68" y2="40"/><line x1="80" y1="58" x2="80" y2="52"/></g>
+          <line x1="80" y1="40" x2="80" y2="56" stroke="currentColor" stroke-width="1.2"/>
+        </svg>
+        <h3 data-i18n="marble.2.t">İşleme</h3>
+        <p data-i18n="marble.2.b">Hassas kesimle ham bloktan disk doğar.</p>
+      </div>
+      <div class="mline" aria-hidden="true"></div>
+      <div class="mstep reveal">
+        <span class="mstep__n">03</span>
+        <svg viewBox="0 0 160 120" class="mstep__svg">
+          <ellipse cx="80" cy="84" rx="48" ry="14" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M52 50 l18 18 l-8 8 l-18 -18 z" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M70 68 l8 -8" stroke="currentColor" stroke-width="1.2"/>
+          <path d="M88 60 q14 8 20 18" fill="none" stroke="currentColor" stroke-width="1" opacity=".5"/>
+        </svg>
+        <h3 data-i18n="marble.3.t">El İşçiliği</h3>
+        <p data-i18n="marble.3.b">Her yüzey elde taşlanır, parlatılır, dengelenir.</p>
+      </div>
+      <div class="mline" aria-hidden="true"></div>
+      <div class="mstep reveal">
+        <span class="mstep__n">04</span>
+        <svg viewBox="0 0 160 120" class="mstep__svg">
+          <ellipse cx="80" cy="86" rx="50" ry="15" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M64 80 h32 l-4 -22 h-24 z" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <path d="M96 62 q12 0 12 11 q0 11 -12 11" fill="none" stroke="currentColor" stroke-width="1.4"/>
+          <g stroke="currentColor" stroke-width="0.8" opacity=".5"><path d="M40 86 q40 -8 80 2"/></g>
+          <path class="flow" d="M80 50 q6 -8 0 -16" fill="none" stroke="#C9A86A" stroke-width="1.2"/>
+        </svg>
+        <h3 data-i18n="marble.4.t">Son Ürün</h3>
+        <p data-i18n="marble.4.b">Eşi olmayan damarlarıyla size ulaşır.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURES — bespoke line icons ===== -->
+  <section class="features section">
+    <div class="section__head reveal">
+      <p class="kicker" data-i18n="features.kicker">DETAYLAR</p>
       <h2 class="display" data-i18n="features.h2">Her detay, kasıtlı.</h2>
     </div>
     <div class="features__grid">
-      <article class="feature-card reveal"><span class="feature-card__ico">◈</span><h3 data-i18n="feat.1.t">Sabit Sıcaklık</h3><p data-i18n="feat.1.b">İçeceğinizi ideal içme sıcaklığında tutar.</p></article>
-      <article class="feature-card reveal"><span class="feature-card__ico">❖</span><h3 data-i18n="feat.2.t">Mermer Doku</h3><p data-i18n="feat.2.b">Her parçada benzersiz, doğal damarlar.</p></article>
-      <article class="feature-card reveal"><span class="feature-card__ico">▢</span><h3 data-i18n="feat.3.t">Minimal Tasarım</h3><p data-i18n="feat.3.b">Her masaya ait, hiçbir yere fazla gelmeyen.</p></article>
-      <article class="feature-card reveal"><span class="feature-card__ico">○</span><h3 data-i18n="feat.4.t">Her Fincanla Uyumlu</h3><p data-i18n="feat.4.b">Kupa, bardak, fincan — hepsi sığar.</p></article>
-      <article class="feature-card reveal"><span class="feature-card__ico">~</span><h3 data-i18n="feat.5.t">Sessiz Çalışma</h3><p data-i18n="feat.5.b">Vınlama yok. Sadece sessiz sıcaklık.</p></article>
-      <article class="feature-card reveal"><span class="feature-card__ico">✦</span><h3 data-i18n="feat.6.t">Hediyeye Hazır</h3><p data-i18n="feat.6.b">Açıldığı anda etkileyen lüks bir kutu.</p></article>
-      <article class="feature-card reveal"><span class="feature-card__ico">⌂</span><h3 data-i18n="feat.7.t">Ev Ofisine Dost</h3><p data-i18n="feat.7.b">Çalışma masanız için tasarlandı.</p></article>
-      <article class="feature-card reveal"><span class="feature-card__ico">⚡</span><h3 data-i18n="feat.8.t">Enerji Dostu</h3><p data-i18n="feat.8.b">Bir LED ampulden daha az tüketir.</p></article>
+      <article class="feature-card reveal">
+        <svg viewBox="0 0 32 32" class="ficon"><circle cx="16" cy="23" r="5"/><path d="M16 18V8a3 3 0 0 1 6 0"/><path d="M11 23h-7"/></svg>
+        <h3 data-i18n="feat.1.t">Sabit Sıcaklık</h3><p data-i18n="feat.1.b">İçeceğinizi 55°C ideal içme aralığında tutar.</p>
+      </article>
+      <article class="feature-card reveal">
+        <svg viewBox="0 0 32 32" class="ficon"><rect x="6" y="6" width="20" height="20" rx="2"/><path d="M9 19q6-5 12 1M11 10q5 4 11-1"/></svg>
+        <h3 data-i18n="feat.2.t">Doğal Damar</h3><p data-i18n="feat.2.b">Her parçada benzersiz mermer dokusu.</p>
+      </article>
+      <article class="feature-card reveal">
+        <svg viewBox="0 0 32 32" class="ficon"><circle cx="16" cy="16" r="11"/><circle cx="16" cy="16" r="1.6" fill="currentColor" stroke="none"/></svg>
+        <h3 data-i18n="feat.3.t">Minimal Form</h3><p data-i18n="feat.3.b">Her masaya ait, hiçbir yere fazla gelmeyen.</p>
+      </article>
+      <article class="feature-card reveal">
+        <svg viewBox="0 0 32 32" class="ficon"><path d="M9 11h12v6a6 6 0 0 1-12 0z"/><path d="M21 12h2a2 2 0 0 1 0 4h-2"/><path d="M9 25h12"/></svg>
+        <h3 data-i18n="feat.4.t">Her Fincanla</h3><p data-i18n="feat.4.b">Kupa, bardak, fincan — hepsi oturur.</p>
+      </article>
+      <article class="feature-card reveal">
+        <svg viewBox="0 0 32 32" class="ficon"><path d="M6 16h4l5-5v10l-5-5"/><path d="M20 12a6 6 0 0 1 0 8M23 9a10 10 0 0 1 0 14"/></svg>
+        <h3 data-i18n="feat.5.t">Sessiz</h3><p data-i18n="feat.5.b">Vınlama yok. Sadece sessiz sıcaklık.</p>
+      </article>
+      <article class="feature-card reveal">
+        <svg viewBox="0 0 32 32" class="ficon"><rect x="6" y="13" width="20" height="13" rx="1"/><path d="M6 13l3-5h14l3 5M16 8v18M11 8a3 3 0 0 1 5-2 3 3 0 0 1 5 2"/></svg>
+        <h3 data-i18n="feat.6.t">Hediyeye Hazır</h3><p data-i18n="feat.6.b">Açıldığı anda etkileyen bir kutu.</p>
+      </article>
+      <article class="feature-card reveal">
+        <svg viewBox="0 0 32 32" class="ficon"><path d="M6 15l10-8 10 8"/><path d="M9 13v12h14V13"/><rect x="14" y="18" width="4" height="7"/></svg>
+        <h3 data-i18n="feat.7.t">Ev Ofisine Dost</h3><p data-i18n="feat.7.b">Çalışma masanız için tasarlandı.</p>
+      </article>
+      <article class="feature-card reveal">
+        <svg viewBox="0 0 32 32" class="ficon"><rect x="8" y="11" width="16" height="10" rx="5"/><line x1="13" y1="11" x2="13" y2="21"/><line x1="19" y1="11" x2="19" y2="21"/><path d="M24 14h2v4h-2"/></svg>
+        <h3 data-i18n="feat.8.t">USB-C · 15W</h3><p data-i18n="feat.8.b">Bir LED ampulden daha az tüketir.</p>
+      </article>
     </div>
   </section>
 
-  <!-- ============ SECTION 5 — LIFESTYLE ============ -->
-  <section class="gallery section" id="gallery">
-    <div class="section__head reveal">
-      <p class="kicker" data-i18n="gallery.kicker">YAŞAM</p>
-      <h2 class="display" data-i18n="gallery.h2">Her ortamın ait olduğu yer.</h2>
-    </div>
-    <div class="gallery__grid">
-      <figure class="gallery__item gallery__item--tall reveal" data-scene="office"><figcaption data-i18n="gallery.office">Lüks Ofis</figcaption></figure>
-      <figure class="gallery__item reveal" data-scene="desk"><figcaption data-i18n="gallery.desk">Tasarım Çalışma Alanı</figcaption></figure>
-      <figure class="gallery__item reveal" data-scene="reading"><figcaption data-i18n="gallery.reading">Okuma Köşesi</figcaption></figure>
-      <figure class="gallery__item gallery__item--wide reveal" data-scene="ritual"><figcaption data-i18n="gallery.ritual">Kahve Ritüeli</figcaption></figure>
-      <figure class="gallery__item reveal" data-scene="winter"><figcaption data-i18n="gallery.winter">Kış Sabahı</figcaption></figure>
-      <figure class="gallery__item reveal" data-scene="studio"><figcaption data-i18n="gallery.studio">Yaratıcı Stüdyo</figcaption></figure>
+  <!-- ===== WHY MARBLE ===== -->
+  <section class="why section--soft">
+    <div class="why__inner">
+      <div class="why__text reveal">
+        <p class="kicker" data-i18n="why.kicker">NEDEN MERMER</p>
+        <h2 class="display" data-i18n="why.h2">Bir malzeme değil. Bir his.</h2>
+        <p class="why__lede" data-i18n="why.lede">Mermer ısıyı plastik veya metalin asla yapamayacağı şekilde tutar — yavaş, dengeli, zarif. Her parça benzersiz damarlara sahiptir; dünyada tam olarak sizinkinin eşi yoktur.</p>
+        <ul class="why__points">
+          <li><b data-i18n="why.p1.t">Üstün ısı tutma</b><span data-i18n="why.p1.b">Doğal taş ısıyı eşit dağıtır ve uzun süre saklar.</span></li>
+          <li><b data-i18n="why.p2.t">Zarif ağırlık</b><span data-i18n="why.p2.b">Elinizde hissettiğiniz an kalite belli olur.</span></li>
+          <li><b data-i18n="why.p3.t">Zamansız lüks</b><span data-i18n="why.p3.b">Trendler geçer. Mermer her zaman doğru kalır.</span></li>
+        </ul>
+      </div>
+      <div class="why__visual reveal">
+        <svg viewBox="0 0 360 440" class="marble-macro">
+          <rect width="360" height="440" fill="url(#discTop)"/>
+          <rect width="360" height="440" filter="url(#marbleClouds)" opacity=".8"/>
+          <rect width="360" height="440" filter="url(#grain)"/>
+          <g class="veins" stroke="#9a8e79" fill="none" stroke-linecap="round">
+            <path d="M20 120 q120 -50 200 20 q80 60 130 10" stroke-width="2.4" opacity=".5"/>
+            <path d="M-10 240 q150 60 280 -10 q60 -32 110 8" stroke-width="1.8" opacity=".45"/>
+            <path d="M60 60 q40 120 -10 200 q-30 50 10 110" stroke-width="1.4" opacity=".4"/>
+            <path d="M250 40 q30 160 60 240 q20 50 -10 120" stroke-width="1.2" opacity=".4"/>
+            <path d="M120 200 q60 30 50 110" stroke-width="1" opacity=".35"/>
+          </g>
+        </svg>
+      </div>
     </div>
   </section>
 
-  <!-- ============ SECTION 6 — SOCIAL PROOF ============ -->
-  <section class="proof section--soft" id="proof">
+  <!-- ===== SOCIAL PROOF ===== -->
+  <section class="proof section">
     <div class="section__head reveal">
       <p class="kicker" data-i18n="proof.kicker">SÖZLER</p>
       <h2 class="display" data-i18n="proof.h2">1.284 kişi soğuk kahveyi geride bıraktı.</h2>
@@ -259,44 +529,28 @@
       <blockquote class="reveal"><span class="stars">★★★★★</span><p data-i18n="proof.1">"Satın alana kadar buna ihtiyacım olduğunu bilmiyordum."</p><cite data-i18n="proof.1.n">— Defne K.</cite></blockquote>
       <blockquote class="reveal"><span class="stars">★★★★★</span><p data-i18n="proof.2">"Kahvem her toplantı boyunca sıcak kalıyor."</p><cite data-i18n="proof.2.n">— Mert A.</cite></blockquote>
       <blockquote class="reveal"><span class="stars">★★★★★</span><p data-i18n="proof.3">"Olduğundan çok daha pahalı görünüyor."</p><cite data-i18n="proof.3.n">— Selin Y.</cite></blockquote>
-      <blockquote class="reveal"><span class="stars">★★★★★</span><p data-i18n="proof.4">"Şimdiye kadar aldığım en iyi masa aksesuarı."</p><cite data-i18n="proof.4.n">— Can T.</cite></blockquote>
+      <blockquote class="reveal"><span class="stars">★★★★★</span><p data-i18n="proof.4">"Bir bardak altlığı değil, masamda bir sanat eseri."</p><cite data-i18n="proof.4.n">— Can T.</cite></blockquote>
     </div>
   </section>
 
-  <!-- ============ SECTION 7 — GIFT ============ -->
-  <section class="gift section" id="gift">
-    <div class="gift__inner reveal">
-      <p class="kicker" data-i18n="gift.kicker">HEDİYE</p>
-      <h2 class="display" data-i18n="gift.h2">Kimsenin almayı düşünmediği — ama herkesin bayıldığı hediye.</h2>
-      <div class="gift__chips">
-        <span data-i18n="gift.c1">Baba</span>
-        <span data-i18n="gift.c2">Anne</span>
-        <span data-i18n="gift.c3">Partner</span>
-        <span data-i18n="gift.c4">İş arkadaşı</span>
-        <span data-i18n="gift.c5">Kahve tutkunları</span>
-        <span data-i18n="gift.c6">Uzaktan çalışanlar</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ SECTION 8 — SPECS ============ -->
-  <section class="specs section" id="specs">
+  <!-- ===== SPECS ===== -->
+  <section class="specs section--soft" id="specs">
     <div class="section__head reveal">
       <p class="kicker" data-i18n="specs.kicker">TEKNİK</p>
-      <h2 class="display" data-i18n="specs.h2">Mühendislik, görünmez. Sonuç, hissedilir.</h2>
+      <h2 class="display" data-i18n="specs.h2">Mühendislik görünmez. Sonuç hissedilir.</h2>
     </div>
     <div class="specs__list">
       <details class="spec reveal" open><summary><span data-i18n="spec.1.t">Malzeme</span><i></i></summary><p data-i18n="spec.1.b">%100 doğal mermer üst yüzey, kaymaz taban.</p></details>
       <details class="spec reveal"><summary><span data-i18n="spec.2.t">Sıcaklık</span><i></i></summary><p data-i18n="spec.2.b">Sabit 55°C — kahve ve çay için ideal içme aralığı.</p></details>
-      <details class="spec reveal"><summary><span data-i18n="spec.3.t">Güç</span><i></i></summary><p data-i18n="spec.3.b">15W · USB-C ile çalışır · gerilim 5V.</p></details>
+      <details class="spec reveal"><summary><span data-i18n="spec.3.t">Güç</span><i></i></summary><p data-i18n="spec.3.b">15W · USB-C ile çalışır · 5V.</p></details>
       <details class="spec reveal"><summary><span data-i18n="spec.4.t">Ölçüler</span><i></i></summary><p data-i18n="spec.4.b">Ø 105 mm · yükseklik 18 mm.</p></details>
       <details class="spec reveal"><summary><span data-i18n="spec.5.t">Ağırlık</span><i></i></summary><p data-i18n="spec.5.b">480 g — elinizde gerçek bir nesne hissi.</p></details>
       <details class="spec reveal"><summary><span data-i18n="spec.6.t">Güvenlik</span><i></i></summary><p data-i18n="spec.6.b">Aşırı ısınma koruması + otomatik kapanma sensörü.</p></details>
     </div>
   </section>
 
-  <!-- ============ SECTION 9 — FAQ ============ -->
-  <section class="faq section--soft" id="faq">
+  <!-- ===== FAQ ===== -->
+  <section class="faq section" id="faq">
     <div class="section__head reveal">
       <p class="kicker" data-i18n="faq.kicker">MERAK EDİLENLER</p>
       <h2 class="display" data-i18n="faq.h2">Aklınızdaki her soru.</h2>
@@ -305,57 +559,53 @@
       <details class="faq-item reveal"><summary><span data-i18n="faq.1.q">Fincanlara zarar verir mi?</span><i></i></summary><p data-i18n="faq.1.a">Hayır. Yüzey nazik, sabit bir sıcaklıkta kalır — kupalarınız ve bardaklarınız tamamen güvende.</p></details>
       <details class="faq-item reveal"><summary><span data-i18n="faq.2.q">Güvenli mi?</span><i></i></summary><p data-i18n="faq.2.a">Evet. Aşırı ısınma koruması ve fincan algılayan otomatik kapanma sistemi standarttır.</p></details>
       <details class="faq-item reveal"><summary><span data-i18n="faq.3.q">Çok elektrik harcar mı?</span><i></i></summary><p data-i18n="faq.3.a">Hayır. Yalnızca 15W çeker — bir LED ampulden daha az.</p></details>
-      <details class="faq-item reveal"><summary><span data-i18n="faq.4.q">Ne kadar sıcak tutar?</span><i></i></summary><p data-i18n="faq.4.a">Açık kaldığı sürece. İçeceğiniz fincandayken sabit 55°C'de kalır.</p></details>
+      <details class="faq-item reveal"><summary><span data-i18n="faq.4.q">Hangi kabloyla çalışır?</span><i></i></summary><p data-i18n="faq.4.a">Standart USB-C. Dizüstü, powerbank veya herhangi bir USB-C adaptörle.</p></details>
       <details class="faq-item reveal"><summary><span data-i18n="faq.5.q">Tüm gün açık kalabilir mi?</span><i></i></summary><p data-i18n="faq.5.a">Evet. Güvenle tüm gün açık bırakılacak şekilde tasarlandı.</p></details>
     </div>
   </section>
 
-  <!-- ============ SECTION 10 — FINAL CLOSE / ORDER ============ -->
+  <!-- ===== FINAL CLOSE ===== -->
   <section class="close" id="order">
     <div class="close__bg" aria-hidden="true"></div>
     <div class="close__inner reveal">
       <p class="hero__eyebrow" data-i18n="close.eyebrow">SINIRLI İLK PARTİ</p>
       <h2 class="close__title" data-i18n="close.h2">Bir Daha Asla Soğuk Kahve İçmeyin.</h2>
-      <p class="close__sub" data-i18n="close.sub">Her kahve molasını lüks bir ritüele dönüştürün.</p>
-
+      <p class="close__sub" data-i18n="close.sub">Her kahve molasını masaüstü bir sanat eserine dönüştürün.</p>
       <div class="price">
         <span class="price__old">₺2.400</span>
         <span class="price__now">₺1.690</span>
         <span class="price__tag" data-i18n="close.save">Lansman fiyatı</span>
       </div>
-
-      <a href="#" class="btn btn--solid btn--xl" id="buyBtn" data-i18n="close.cta">Kahvemi Sıcak Tut →</a>
-
+      <a href="#" class="btn btn--solid btn--xl" id="buyBtn" data-i18n="close.cta">Sıcak Tutmaya Başla</a>
       <ul class="close__trust">
         <li data-i18n="close.t1">✓ Ücretsiz & hızlı kargo</li>
         <li data-i18n="close.t2">✓ 30 gün koşulsuz iade</li>
         <li data-i18n="close.t3">✓ 2 yıl garanti</li>
       </ul>
-
       <p class="close__stock"><span class="dot"></span><span data-i18n="close.stock">Bu partide yalnızca 47 adet kaldı</span></p>
     </div>
   </section>
 
-  <!-- ============ FOOTER ============ -->
+  <!-- ===== FOOTER ===== -->
   <footer class="footer">
     <div class="footer__brand">EREVDECO</div>
-    <p data-i18n="footer.tag">Günlük ritüelleriniz için yapılmış lüks objeler.</p>
+    <p data-i18n="footer.tag">Günlük ritüelleriniz için yapılmış masaüstü objeler.</p>
     <div class="footer__links">
-      <a href="#why" data-i18n="nav.why">Neden Mermer</a>
-      <a href="#features" data-i18n="nav.features">Özellikler</a>
-      <a href="#faq" data-i18n="nav.faq">SSS</a>
+      <a href="#anatomi" data-i18n="nav.anat">Anatomi</a>
+      <a href="#usbc" data-i18n="nav.usbc">USB-C</a>
+      <a href="#mermer" data-i18n="nav.marble">Mermer</a>
       <a href="#order" data-i18n="nav.cta">Satın Al</a>
     </div>
     <p class="footer__copy">© 2026 EREVDECO. <span data-i18n="footer.rights">Tüm hakları saklıdır.</span></p>
   </footer>
 
-  <!-- ============ STICKY MOBILE CTA ============ -->
+  <!-- ===== STICKY MOBILE CTA ===== -->
   <a href="#order" class="sticky-cta" id="stickyCta">
     <span class="sticky-cta__price">₺1.690</span>
-    <span class="sticky-cta__label" data-i18n="sticky.cta">Kahvemi Sıcak Tut →</span>
+    <span class="sticky-cta__label" data-i18n="sticky.cta">Sıcak Tutmaya Başla →</span>
   </a>
 
-  <!-- ============ EXIT INTENT MODAL ============ -->
+  <!-- ===== EXIT INTENT MODAL ===== -->
   <div class="modal" id="exitModal" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="modal__backdrop" data-close></div>
     <div class="modal__panel">

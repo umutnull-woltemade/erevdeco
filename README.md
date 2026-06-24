@@ -6,13 +6,16 @@ A world-class, bilingual (TR/EN) direct-to-consumer luxury landing page for **ER
 
 ## Highlights
 
-- **Bilingual** — full Turkish + English with an instant in-page toggle (no reload), language persisted to `localStorage`.
-- **Cinematic hero** — pure-CSS marble coaster + mug with live steam, scroll-driven rotation and parallax, rotating headlines.
-- **Apple-style scroll story** — sticky pinned product with 3 narrative steps.
-- **10 conversion sections** — problem, transformation, why marble, features, lifestyle gallery, social proof, gift psychology, specs, animated FAQ, emotional close.
+- **100% bespoke visual language** — no stock photos, no icon kits (Heroicons/Feather), no generic 3D. Every illustration is hand-authored inline SVG: procedural marble veining via SVG `feTurbulence` filters, patent-drawing line art, USB-C scenario sketches.
+- **Cinematic hero** — large bespoke marble-warmer render (realistic veining, visible USB-C port, light refraction, live steam, heat halo) with scroll parallax.
+- **Apple-style scroll storytelling** — a pinned, scroll-driven exploded **cross-section** (anatomy): marble surface → heat plate → heating element → sensor → USB-C module, with animated heat waves, power flow, and synced annotations across 6 phases.
+- **Bespoke data viz** — the cooling-curve "problem" chart is a hand-drawn animated SVG (no chart library).
+- **Original line-art sets** — 5 USB-C usage scenarios, a 4-step marble-origin story (quarry → processing → craft → object), and 8 custom feature icons.
+- **Micro-interactions** — cursor-following warm light, drifting marble veins, button light-sweep, draw-on-scroll strokes.
+- **Bilingual** — full Turkish + English, instant in-page toggle (no reload), persisted to `localStorage`, full key parity.
 - **Conversion mechanics** — sticky mobile buy bar, scarcity counter, exit-intent discount modal, scroll progress, micro-trust signals.
-- **Luxury system** — Cormorant Garamond + Inter, marble/charcoal/soft-gold palette, generous whitespace, smooth `cubic-bezier` motion.
-- **Performance & a11y** — zero build step, no framework, system-font fallbacks, `prefers-reduced-motion` support, semantic markup, SEO + Product JSON-LD.
+- **Luxury system** — Cormorant Garamond + Inter, pure-white / kırık-beyaz / marble / anthracite / soft-gold palette, massive whitespace, `cubic-bezier` motion.
+- **Performance & a11y** — zero build step, no framework, `prefers-reduced-motion` support, semantic markup, SEO + Product JSON-LD.
 
 ## Tech
 
