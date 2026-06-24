@@ -250,7 +250,18 @@ window.I18N = {
     "legal.terms.h2": "Siparişler", "legal.terms.b2": "Tüm siparişler stok durumuna ve onayına tabidir. Fiyatlar TL cinsindendir ve geçerli vergileri içerir.",
     "legal.terms.h3": "Sorumluluk", "legal.terms.b3": "Ürünlerimiz amaçlarına uygun kullanım için tasarlanmıştır. Kullanım kılavuzundaki güvenlik talimatlarına uyulması gerekir.",
 
-    "page.back": "← Ana sayfa"
+    "page.back": "← Ana sayfa",
+
+    "menu.open": "Menü",
+    "skip": "İçeriğe geç",
+
+    "cookie.text": "Deneyiminizi iyileştirmek için çerez kullanıyoruz.",
+    "cookie.accept": "Kabul Et",
+
+    "reviews.kicker": "DEĞERLENDİRMELER",
+    "reviews.title": "Müşterilerimiz ne diyor?",
+    "reviews.based": "1.284 değerlendirmeye göre",
+    "reviews.recommend": "müşterimiz arkadaşına tavsiye ediyor"
   },
 
   en: {
@@ -503,6 +514,17 @@ window.I18N = {
     "legal.terms.h2": "Orders", "legal.terms.b2": "All orders are subject to availability and confirmation. Prices are in TRY and include applicable taxes.",
     "legal.terms.h3": "Liability", "legal.terms.b3": "Our products are designed for their intended use. The safety instructions in the manual must be followed.",
 
-    "page.back": "← Home"
+    "page.back": "← Home",
+
+    "menu.open": "Menu",
+    "skip": "Skip to content",
+
+    "cookie.text": "We use cookies to improve your experience.",
+    "cookie.accept": "Accept",
+
+    "reviews.kicker": "REVIEWS",
+    "reviews.title": "What our customers say",
+    "reviews.based": "Based on 1,284 reviews",
+    "reviews.recommend": "of customers recommend us to a friend"
   }
 };

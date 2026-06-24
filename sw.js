@@ -1,10 +1,10 @@
 /* EREVDECO service worker — cache-first for the shell, network fallback. */
-var CACHE = "erev-v1";
+var CACHE = "erev-v2";
 var ASSETS = [
   "./", "./index.html", "./urun.html", "./hikaye.html", "./odeme.html",
   "./404.html", "./kargo-iade.html", "./gizlilik.html", "./kosullar.html",
   "./css/style.css", "./js/i18n.js", "./js/main.js", "./js/cart.js",
-  "./js/chrome.js", "./favicon.svg", "./manifest.webmanifest"
+  "./js/chrome.js", "./favicon.svg", "./manifest.webmanifest", "./assets/og.png"
 ];
 
 self.addEventListener("install", function (e) {

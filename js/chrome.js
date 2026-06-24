@@ -27,6 +27,7 @@
     '      <span class="lang-toggle__opt is-active" data-lang="tr">TR</span><span class="lang-toggle__sep">/</span><span class="lang-toggle__opt" data-lang="en">EN</span>' +
     '    </button>' +
     '    <button class="nav__cartbtn" data-cart-toggle aria-label="Cart"><span class="nav__carticon"></span><span class="nav__cartbadge" data-cart-count>0</span></button>' +
+    '    <button class="nav__burger" aria-label="Menu"><span></span><span></span></button>' +
     '  </div>' +
     "</header>");
   document.body.insertBefore(nav, document.body.firstChild);

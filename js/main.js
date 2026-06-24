@@ -291,9 +291,62 @@
     });
   }
 
+  /* ---------- Skip link ---------- */
+  function initA11y() {
+    var main = document.querySelector("main") || document.querySelector("section");
+    if (!main) return;
+    if (!main.id) main.id = "maincontent";
+    if (document.querySelector(".skip")) return;
+    var s = document.createElement("a");
+    s.className = "skip"; s.href = "#" + main.id; s.setAttribute("data-i18n", "skip"); s.textContent = "İçeriğe geç";
+    document.body.insertBefore(s, document.body.firstChild);
+  }
+
+  /* ---------- Mobile menu ---------- */
+  function initMenu() {
+    var burger = document.querySelector(".nav__burger");
+    var links = document.querySelector(".nav__links");
+    if (!burger || !links) return;
+    var overlay = document.createElement("div");
+    overlay.className = "navmenu";
+    var inner = document.createElement("nav");
+    inner.className = "navmenu__inner";
+    Array.prototype.forEach.call(links.children, function (a) {
+      var c = a.cloneNode(true); inner.appendChild(c);
+    });
+    overlay.appendChild(inner);
+    document.body.appendChild(overlay);
+    function close() { overlay.classList.remove("is-open"); burger.classList.remove("is-open"); document.body.style.overflow = ""; }
+    function open() { overlay.classList.add("is-open"); burger.classList.add("is-open"); document.body.style.overflow = "hidden"; }
+    burger.addEventListener("click", function () { overlay.classList.contains("is-open") ? close() : open(); });
+    overlay.addEventListener("click", function (e) { if (e.target === overlay || e.target.tagName === "A") close(); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  }
+
+  /* ---------- Cookie consent ---------- */
+  function initCookies() {
+    var ok = false;
+    try { ok = localStorage.getItem("erev_cookie") === "1"; } catch (e) {}
+    if (ok) return;
+    var dict = window.I18N[state.lang] || {};
+    var bar = document.createElement("div");
+    bar.className = "cookiebar";
+    bar.innerHTML = '<span>' + (dict["cookie.text"] || "We use cookies.") + '</span>' +
+      '<button class="btn btn--solid cookiebar__btn">' + (dict["cookie.accept"] || "Accept") + '</button>';
+    document.body.appendChild(bar);
+    requestAnimationFrame(function () { bar.classList.add("is-in"); });
+    bar.querySelector("button").addEventListener("click", function () {
+      try { localStorage.setItem("erev_cookie", "1"); } catch (e) {}
+      bar.classList.remove("is-in"); setTimeout(function () { bar.remove(); }, 400);
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", function () {
+    initA11y();
     initIntro();
     initLang();
+    initMenu();
+    initCookies();
     initConfig();
     initReveal();
     initAnatomy();
