@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#FFFFFF" />
+  <title>Mermer Sıcak Tutucu — EREVDECO</title>
+  <meta name="description" content="EREVDECO Mermer Sıcak Tutucu — el yapımı doğal mermer, USB-C ile çalışır, 55°C sabit sıcaklık." />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-chrome="1">
+
+  <svg class="defs" width="0" height="0" aria-hidden="true" focusable="false">
+    <defs>
+      <filter id="marbleClouds" x="-30%" y="-30%" width="160%" height="160%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="4" seed="14" result="n"/>
+        <feColorMatrix in="n" type="matrix" values="0 0 0 0 0.44  0 0 0 0 0.41  0 0 0 0 0.36  0 0 0 0.55 0"/>
+      </filter>
+      <filter id="grain" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" result="g"/>
+        <feColorMatrix in="g" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.05 0"/>
+      </filter>
+      <radialGradient id="discTop" cx="34%" cy="26%" r="78%">
+        <stop offset="0%" stop-color="var(--m1)"/><stop offset="55%" stop-color="var(--m2)"/><stop offset="100%" stop-color="var(--m3)"/>
+      </radialGradient>
+      <radialGradient id="heatGrad" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="rgba(201,168,106,.85)"/><stop offset="100%" stop-color="rgba(201,168,106,0)"/>
+      </radialGradient>
+      <linearGradient id="mugGrad" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0%" stop-color="#ffffff"/><stop offset="60%" stop-color="#ece6dd"/><stop offset="100%" stop-color="#d6cdc0"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <main class="pdp">
+    <div class="pdp__gallery">
+      <svg class="product" viewBox="0 0 620 760" aria-label="Marble heated coaster">
+        <ellipse class="refraction" cx="250" cy="250" rx="190" ry="150"/>
+        <g class="steam" stroke="#fff" stroke-width="9" stroke-linecap="round" fill="none" opacity=".75">
+          <path class="steam__p s1" d="M286 250 q-26 -34 0 -68 q26 -34 0 -68"/>
+          <path class="steam__p s2" d="M320 250 q26 -36 0 -72 q-26 -36 0 -72"/>
+          <path class="steam__p s3" d="M352 250 q-22 -32 0 -64 q22 -32 0 -64"/>
+        </g>
+        <g class="mug">
+          <path class="mug__handle" d="M404 360 q66 6 66 70 q0 64 -66 70" fill="none" stroke="#e2dbd0" stroke-width="20"/>
+          <path class="mug__body" d="M250 350 h160 l-12 168 q-2 26 -68 26 q-66 0 -68 -26 z" fill="url(#mugGrad)"/>
+          <ellipse cx="330" cy="350" rx="80" ry="22" fill="#f3efe8"/>
+          <ellipse cx="330" cy="350" rx="64" ry="16" fill="#3a2316"/>
+          <ellipse cx="312" cy="345" rx="22" ry="6" fill="#5d3a23" opacity=".7"/>
+        </g>
+        <ellipse class="heat-halo" cx="320" cy="556" rx="150" ry="40" fill="url(#heatGrad)"/>
+        <g class="disc">
+          <path class="disc__side" d="M120 560 a200 64 0 0 0 400 0 v34 a200 64 0 0 1 -400 0 z" fill="#cfc5b6"/>
+          <g class="usbc-port"><rect x="500" y="572" width="40" height="16" rx="8" fill="#b3a896"/><rect x="507" y="577" width="26" height="6" rx="3" fill="#7c715f"/></g>
+          <ellipse class="disc__top" cx="320" cy="560" rx="200" ry="64" fill="url(#discTop)"/>
+          <clipPath id="discClip2"><ellipse cx="320" cy="560" rx="200" ry="64"/></clipPath>
+          <g clip-path="url(#discClip2)">
+            <rect x="120" y="496" width="400" height="128" filter="url(#marbleClouds)" opacity=".7"/>
+            <rect x="120" y="496" width="400" height="128" filter="url(#grain)"/>
+            <g class="veins" stroke="var(--vein)" fill="none" stroke-linecap="round">
+              <path d="M150 542 q70 -20 150 6 q90 30 200 -4" stroke-width="2" opacity=".55"/>
+              <path d="M170 580 q90 26 180 4 q70 -16 150 10" stroke-width="1.4" opacity=".45"/>
+              <path d="M210 528 q40 30 30 70" stroke-width="1.2" opacity=".4"/>
+              <path d="M380 596 q26 -34 70 -40" stroke-width="1.2" opacity=".4"/>
+            </g>
+          </g>
+          <ellipse cx="320" cy="560" rx="200" ry="64" fill="none" stroke="#fff" stroke-width="1.5" opacity=".5"/>
+          <ellipse class="disc__glow" cx="320" cy="560" rx="120" ry="38" fill="none" stroke="url(#heatGrad)" stroke-width="10"/>
+        </g>
+        <ellipse class="reflection-disc" cx="320" cy="636" rx="184" ry="40" fill="url(#discTop)" opacity=".12"/>
+        <ellipse class="ground" cx="320" cy="618" rx="170" ry="20" fill="rgba(21,21,21,.16)"/>
+        <ellipse class="ground" cx="320" cy="660" rx="214" ry="30" fill="rgba(21,21,21,.07)"/>
+      </svg>
+    </div>
+
+    <div class="pdp__info">
+      <p class="pdp__eyebrow" data-i18n="prod.eyebrow">EL YAPIMI · DOĞAL MERMER · USB-C</p>
+      <h1 class="pdp__title" data-i18n="prod.title">Mermer Sıcak Tutucu</h1>
+      <div class="pdp__rate"><span class="stars">★★★★★</span><span>4.9 · 1.284</span></div>
+      <div class="pdp__price"><span class="pdp__now" id="pdpNow">₺1.690</span><span class="pdp__old" id="pdpOld">₺2.400</span></div>
+      <p class="pdp__desc" data-i18n="prod.desc">El işçiliğiyle yontulmuş doğal mermer. USB-C gücüyle kahvenizi saatlerce 55°C'de tutar — masanızı bir sanat eserine dönüştürür.</p>
+
+      <div class="pdp__group">
+        <span class="pdp__lbl" data-i18n="prod.marble">Mermer seçimi</span>
+        <div class="config__swatches">
+          <button class="swatch is-active" data-marble="calacatta" aria-label="Calacatta"><span class="swatch__chip swatch__chip--calacatta"></span><span class="swatch__name">Calacatta</span></button>
+          <button class="swatch" data-marble="nero" aria-label="Nero"><span class="swatch__chip swatch__chip--nero"></span><span class="swatch__name">Nero</span></button>
+          <button class="swatch" data-marble="emperador" aria-label="Emperador"><span class="swatch__chip swatch__chip--emperador"></span><span class="swatch__name">Emperador</span></button>
+        </div>
+      </div>
+
+      <div class="pdp__group">
+        <span class="pdp__lbl" data-i18n="prod.bundle">Paket</span>
+        <div class="pdp__bundles">
+          <button class="bundle is-active" data-bundle="1" data-price="1690" data-old="2400"><b data-i18n="prod.b1">Tek</b><span data-i18n="prod.b1d">1 adet</span><em>₺1.690</em></button>
+          <button class="bundle" data-bundle="2" data-price="2990" data-old="3380"><b data-i18n="prod.b2">İkili Set</b><span data-i18n="prod.b2d">2 adet · %12 indirim</span><em>₺2.990</em></button>
+          <button class="bundle" data-bundle="3" data-price="3990" data-old="5070"><b data-i18n="prod.b3">Üçlü Set</b><span data-i18n="prod.b3d">3 adet · %21 indirim</span><em>₺3.990</em></button>
+        </div>
+      </div>
+
+      <div class="pdp__row">
+        <div class="qtystep">
+          <button id="qtyDec" aria-label="-">−</button><span id="qtyVal">1</span><button id="qtyInc" aria-label="+">+</button>
+        </div>
+        <button class="btn btn--solid pdp__add" id="addBtn" data-i18n="prod.add">Sepete Ekle</button>
+      </div>
+
+      <ul class="pdp__trust">
+        <li><i class="tick"></i><span data-i18n="prod.ship1">Ücretsiz & hızlı kargo</span></li>
+        <li><i class="tick"></i><span data-i18n="prod.ship2">30 gün koşulsuz iade</span></li>
+        <li><i class="tick"></i><span data-i18n="prod.ship3">2 yıl garanti</span></li>
+      </ul>
+
+      <div class="pdp__box">
+        <h3 data-i18n="prod.inbox">Kutuda neler var</h3>
+        <ul>
+          <li data-i18n="prod.inbox1">Mermer sıcak tutucu</li>
+          <li data-i18n="prod.inbox2">1,5 m örgülü USB-C kablo</li>
+          <li data-i18n="prod.inbox3">El yapımı sertifika kartı</li>
+        </ul>
+      </div>
+
+      <div class="pdp__specs">
+        <h3 data-i18n="prod.specs">Teknik özellikler</h3>
+        <dl>
+          <dt data-i18n="spec.1.t">Malzeme</dt><dd>%100 mermer</dd>
+          <dt data-i18n="spec.2.t">Sıcaklık</dt><dd>55°C</dd>
+          <dt data-i18n="spec.3.t">Güç</dt><dd>15W · USB-C</dd>
+          <dt data-i18n="spec.4.t">Ölçüler</dt><dd>Ø105 · 18mm</dd>
+          <dt data-i18n="spec.5.t">Ağırlık</dt><dd>480 g</dd>
+        </dl>
+        <p style="margin-top:1.2rem;color:var(--ink-60);font-size:.92rem" data-i18n="prod.unique">Her parça benzersiz damarlara sahiptir — sizinkinin eşi yok.</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/chrome.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+  (function(){
+    var qty=1;
+    var qv=document.getElementById('qtyVal');
+    document.getElementById('qtyInc').addEventListener('click',function(){qty++;qv.textContent=qty;});
+    document.getElementById('qtyDec').addEventListener('click',function(){if(qty>1){qty--;qv.textContent=qty;}});
+    var bundles=document.querySelectorAll('.bundle');
+    var now=document.getElementById('pdpNow'),old=document.getElementById('pdpOld');
+    var curBundle=1;
+    function money(n){return '₺'+Number(n).toLocaleString('tr-TR');}
+    bundles.forEach(function(b){b.addEventListener('click',function(){
+      bundles.forEach(function(x){x.classList.remove('is-active');});
+      b.classList.add('is-active');
+      curBundle=parseInt(b.dataset.bundle,10);
+      now.textContent=money(b.dataset.price);old.textContent=money(b.dataset.old);
+    });});
+    document.getElementById('addBtn').addEventListener('click',function(){
+      var marble=(document.querySelector('.swatch.is-active')||{}).dataset?document.querySelector('.swatch.is-active').dataset.marble:'calacatta';
+      window.Cart.add(curBundle,marble,qty);
+    });
+  })();
+  </script>
+</body>
+</html>

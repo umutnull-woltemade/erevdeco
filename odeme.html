@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#FFFFFF" />
+  <title>Ödeme — EREVDECO</title>
+  <meta name="robots" content="noindex" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-chrome="1">
+
+  <main class="checkout" id="checkout">
+    <div class="subhead" style="padding-bottom:1rem"><h1 data-i18n="co.title">Ödeme</h1></div>
+    <div class="checkout__steps">
+      <span><b data-i18n="co.steps.cart">Sepet</b></span>
+      <span><b data-i18n="co.steps.ship">Teslimat</b></span>
+      <span><b data-i18n="co.steps.pay">Ödeme</b></span>
+    </div>
+
+    <!-- empty state -->
+    <div class="checkout__empty" id="coEmpty" hidden>
+      <p data-i18n="co.empty">Sepetiniz boş.</p>
+      <a class="btn btn--solid" href="urun.html" data-i18n="co.emptycta">Ürünü incele</a>
+    </div>
+
+    <!-- success state -->
+    <div class="checkout__ok" id="coOk" hidden>
+      <div class="okmark"></div>
+      <h2 data-i18n="co.ok.title">Teşekkürler! Siparişiniz alındı.</h2>
+      <p data-i18n="co.ok.sub">Onay e-postası birazdan kutunuzda olacak. Mermeriniz özenle hazırlanıyor.</p>
+      <div class="ordercode"><span data-i18n="co.ok.order">Sipariş no</span>: <b id="orderCode">EREV-000000</b></div>
+      <div><a class="btn btn--solid" href="index.html" data-i18n="co.ok.cta">Alışverişe devam et</a></div>
+    </div>
+
+    <!-- main checkout -->
+    <form class="checkout__grid" id="coForm">
+      <div class="checkout__form">
+        <div class="formsec">
+          <h3 data-i18n="co.contact">İletişim</h3>
+          <div class="formgrid">
+            <div class="field field--full"><label data-i18n="co.email">E-posta</label><input type="email" required></div>
+          </div>
+        </div>
+        <div class="formsec">
+          <h3 data-i18n="co.shiptitle">Teslimat adresi</h3>
+          <div class="formgrid">
+            <div class="field"><label data-i18n="co.fname">Ad</label><input required></div>
+            <div class="field"><label data-i18n="co.lname">Soyad</label><input required></div>
+            <div class="field field--full"><label data-i18n="co.address">Adres</label><input required></div>
+            <div class="field"><label data-i18n="co.city">Şehir</label><input required></div>
+            <div class="field"><label data-i18n="co.zip">Posta kodu</label><input required></div>
+            <div class="field field--full"><label data-i18n="co.phone">Telefon</label><input type="tel" required></div>
+          </div>
+        </div>
+        <div class="formsec">
+          <h3 data-i18n="co.paytitle">Ödeme bilgileri</h3>
+          <div class="formgrid">
+            <div class="field field--full"><label data-i18n="co.card">Kart numarası</label><input inputmode="numeric" placeholder="4242 4242 4242 4242" required></div>
+            <div class="field"><label data-i18n="co.exp">AA/YY</label><input placeholder="08/29" required></div>
+            <div class="field"><label data-i18n="co.cvc">CVC</label><input inputmode="numeric" placeholder="123" required></div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="summary">
+        <h3 data-i18n="co.summary">Sipariş özeti</h3>
+        <div class="summary__items" id="coItems"></div>
+        <div class="summary__row"><span data-i18n="co.subtotal">Ara toplam</span><span id="coSub">₺0</span></div>
+        <div class="summary__row"><span data-i18n="co.shipping">Kargo</span><span data-i18n="co.free">Ücretsiz</span></div>
+        <div class="summary__row summary__row--total"><span data-i18n="co.total">Toplam</span><b id="coTotal">₺0</b></div>
+        <button type="submit" class="btn btn--solid checkout__place" data-i18n="co.place">Siparişi Tamamla</button>
+        <p class="checkout__secure" data-i18n="co.secure">256-bit SSL ile güvenli ödeme</p>
+      </aside>
+    </form>
+  </main>
+
+  <script src="js/i18n.js"></script>
+  <script src="js/chrome.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+  (function(){
+    function lang(){return document.documentElement.lang==='en'?'en':'tr';}
+    function t(k){var d=window.I18N[lang()];return (d&&d[k])||k;}
+    var form=document.getElementById('coForm'),empty=document.getElementById('coEmpty');
+    function refresh(){
+      var items=window.Cart.read();
+      if(!items.length){form.hidden=true;empty.hidden=false;document.querySelector('.checkout__steps').hidden=true;return;}
+      empty.hidden=true;form.hidden=false;
+      var box=document.getElementById('coItems');
+      box.innerHTML=items.map(function(i){
+        var line=window.Cart.BUNDLES[i.bundle].price*i.qty;
+        return '<div class="summary__item"><span>'+window.Cart.lineName(i)+' × '+i.qty+'</span><span>'+window.Cart.money(line)+'</span></div>';
+      }).join('');
+      document.getElementById('coSub').textContent=window.Cart.money(window.Cart.subtotal());
+      document.getElementById('coTotal').textContent=window.Cart.money(window.Cart.subtotal());
+    }
+    refresh();
+    // re-render labels/items on language toggle
+    var lt=document.getElementById('langToggle');
+    if(lt)lt.addEventListener('click',function(){setTimeout(refresh,30);});
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var n='';for(var i=0;i<6;i++){n+=Math.floor(Math.random()*10);}
+      document.getElementById('orderCode').textContent='EREV-'+n;
+      window.Cart.clear();
+      form.hidden=true;document.querySelector('.checkout__steps').hidden=true;
+      document.getElementById('coOk').hidden=false;
+      window.scrollTo({top:0,behavior:'smooth'});
+    });
+  })();
+  </script>
+</body>
+</html>

@@ -22,12 +22,25 @@ A world-class, bilingual (TR/EN) direct-to-consumer luxury landing page for **ER
 Pure static site — HTML, CSS, vanilla JS. No build, no dependencies.
 
 ```
-index.html        # markup + content (TR default)
-css/style.css     # full luxury design system
-js/i18n.js        # TR/EN dictionary
-js/main.js        # i18n, scroll reveal, rotator, sticky CTA, exit intent
-CNAME             # erevdeco.com (GitHub Pages custom domain)
+index.html         # landing page (TR default)
+urun.html          # product / buy page (marble + bundle + qty → cart)
+odeme.html         # checkout flow + order confirmation
+hikaye.html        # brand story
+kargo-iade.html    # shipping & returns
+gizlilik.html      # privacy policy
+kosullar.html      # terms of use
+404.html           # luxury not-found
+css/style.css      # full luxury design system + storefront
+js/i18n.js         # TR/EN dictionary (271 keys, full parity)
+js/main.js         # i18n, reveals, anatomy scroll, configurator, stats…
+js/cart.js         # localStorage cart + slide-out drawer (all pages)
+js/chrome.js       # shared nav + footer injector for sub-pages
+sw.js              # service worker (offline shell cache)
+manifest.webmanifest, favicon.svg, robots.txt, sitemap.xml
 ```
+
+### Storefront
+Full front-end commerce funnel — no backend: a `localStorage` cart with a slide-out drawer (shared across every page), a product page with live marble + bundle + quantity selection, and a checkout that validates, generates an order number, and clears the cart. Installable PWA with an offline shell cache; `robots.txt` + `sitemap.xml` for SEO.
 
 ## Run locally
 

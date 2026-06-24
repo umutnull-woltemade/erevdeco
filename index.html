@@ -17,6 +17,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Product","name":"EREVDECO Marble Heated Coaster","description":"A handcrafted natural-marble, USB-C powered coffee and tea warmer.","brand":{"@type":"Brand","name":"EREVDECO"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"4.9","reviewCount":"1284"}}
@@ -70,9 +72,10 @@
   <header class="nav" id="nav">
     <a href="#top" class="nav__brand">EREVDECO</a>
     <nav class="nav__links" aria-label="Primary">
+      <a href="urun.html" data-i18n="nav.shop">Ürün</a>
       <a href="#anatomi" data-i18n="nav.anat">Anatomi</a>
       <a href="#usbc" data-i18n="nav.usbc">USB-C</a>
-      <a href="#mermer" data-i18n="nav.marble">Mermer</a>
+      <a href="hikaye.html" data-i18n="nav.story">Hikâye</a>
       <a href="#faq" data-i18n="nav.faq">SSS</a>
     </nav>
     <div class="nav__actions">
@@ -81,7 +84,8 @@
         <span class="lang-toggle__sep">/</span>
         <span class="lang-toggle__opt" data-lang="en">EN</span>
       </button>
-      <a href="#order" class="btn btn--ghost nav__cta" data-i18n="nav.cta">Satın Al</a>
+      <button class="nav__cartbtn" data-cart-toggle aria-label="Cart"><span class="nav__carticon"></span><span class="nav__cartbadge" data-cart-count>0</span></button>
+      <a href="urun.html" class="btn btn--ghost nav__cta" data-i18n="nav.cta">Satın Al</a>
     </div>
   </header>
 
@@ -93,7 +97,7 @@
       <h1 class="hero__title" data-i18n="hero.h1">Kahveniz Son Yuduma Kadar Sıcak.</h1>
       <p class="hero__sub" data-i18n="hero.sub">El işçiliğiyle üretilmiş doğal mermer sıcak tutucu. USB-C gücüyle içeceğinizi ideal sıcaklıkta korur.</p>
       <div class="hero__cta">
-        <a href="#order" class="btn btn--solid" data-i18n="hero.cta1">Sıcak Tutmaya Başla</a>
+        <a href="urun.html" class="btn btn--solid" data-i18n="hero.cta1">Sıcak Tutmaya Başla</a>
         <a href="#anatomi" class="btn btn--text" data-i18n="hero.cta2">Nasıl Çalıştığını Gör →</a>
       </div>
       <ul class="hero__ticks">
@@ -637,7 +641,7 @@
         <span class="price__now">₺1.690</span>
         <span class="price__tag" data-i18n="close.save">Lansman fiyatı</span>
       </div>
-      <a href="#" class="btn btn--solid btn--xl" id="buyBtn" data-i18n="close.cta">Sıcak Tutmaya Başla</a>
+      <a href="urun.html" class="btn btn--solid btn--xl" data-i18n="close.cta">Sıcak Tutmaya Başla</a>
       <ul class="close__trust">
         <li data-i18n="close.t1">✓ Ücretsiz & hızlı kargo</li>
         <li data-i18n="close.t2">✓ 30 gün koşulsuz iade</li>
@@ -665,7 +669,7 @@
   </footer>
 
   <!-- ===== STICKY MOBILE CTA ===== -->
-  <a href="#order" class="sticky-cta" id="stickyCta">
+  <a href="urun.html" class="sticky-cta" id="stickyCta">
     <span class="sticky-cta__price">₺1.690</span>
     <span class="sticky-cta__label" data-i18n="sticky.cta">Sıcak Tutmaya Başla →</span>
   </a>
@@ -679,11 +683,13 @@
       <h3 data-i18n="exit.h">İlk siparişinizde %10 indirim.</h3>
       <p data-i18n="exit.b">Kahveniz size teşekkür edecek. Kod anında uygulanır.</p>
       <div class="modal__code" id="exitCode">EREV10</div>
-      <a href="#order" class="btn btn--solid" data-close data-i18n="exit.cta">İndirimi Kullan</a>
+      <a href="urun.html" class="btn btn--solid" data-close data-i18n="exit.cta">İndirimi Kullan</a>
     </div>
   </div>
 
   <script src="js/i18n.js"></script>
+  <script src="js/cart.js"></script>
   <script src="js/main.js"></script>
+  <script>if("serviceWorker" in navigator){window.addEventListener("load",function(){navigator.serviceWorker.register("sw.js").catch(function(){});});}</script>
 </body>
 </html>

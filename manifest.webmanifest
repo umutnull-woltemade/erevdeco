@@ -1,0 +1,12 @@
+{
+  "name": "EREVDECO — Marble Heated Coaster",
+  "short_name": "EREVDECO",
+  "description": "Handcrafted natural-marble, USB-C powered coffee & tea warmer.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#FBFAF7",
+  "theme_color": "#161514",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
