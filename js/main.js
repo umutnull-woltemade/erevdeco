@@ -323,6 +323,25 @@
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
   }
 
+  /* ---------- Announcement bar ---------- */
+  function initAnnounce() {
+    var dismissed = false;
+    try { dismissed = localStorage.getItem("erev_announce") === "1"; } catch (e) {}
+    if (dismissed) return;
+    var dict = window.I18N[state.lang] || {};
+    var bar = document.createElement("div");
+    bar.className = "announce";
+    bar.innerHTML = '<span data-i18n="announce">' + (dict["announce"] || "") + '</span><button class="announce__x" aria-label="Close">×</button>';
+    document.body.insertBefore(bar, document.body.firstChild);
+    document.documentElement.style.setProperty("--announce-h", bar.offsetHeight + "px");
+    bar.querySelector("button").addEventListener("click", function () {
+      try { localStorage.setItem("erev_announce", "1"); } catch (e) {}
+      document.documentElement.style.setProperty("--announce-h", "0px");
+      bar.classList.add("is-hidden");
+      setTimeout(function () { bar.remove(); }, 400);
+    });
+  }
+
   /* ---------- Cookie consent ---------- */
   function initCookies() {
     var ok = false;
@@ -345,6 +364,7 @@
     initA11y();
     initIntro();
     initLang();
+    initAnnounce();
     initMenu();
     initCookies();
     initConfig();

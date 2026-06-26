@@ -66,11 +66,18 @@
             <div class="field"><label data-i18n="co.cvc">CVC</label><input inputmode="numeric" placeholder="123" required></div>
           </div>
         </div>
+        <div class="formsec">
+          <label class="giftcheck"><input type="checkbox" id="giftChk"><span data-i18n="co.gift">Hediye olarak gönder</span></label>
+          <div class="giftbox" id="giftBox" hidden>
+            <textarea id="giftMsg" rows="3" placeholder="Sevdiklerinize bir not bırakın…" data-i18n-ph="co.giftph"></textarea>
+          </div>
+        </div>
       </div>
 
       <aside class="summary">
         <h3 data-i18n="co.summary">Sipariş özeti</h3>
         <div class="summary__items" id="coItems"></div>
+        <div class="summary__gift" id="coGift" hidden data-i18n="co.giftbadge">🎁 Hediye paketi — ücretsiz</div>
         <div class="summary__row"><span data-i18n="co.subtotal">Ara toplam</span><span id="coSub">₺0</span></div>
         <div class="summary__row"><span data-i18n="co.shipping">Kargo</span><span data-i18n="co.free">Ücretsiz</span></div>
         <div class="summary__row summary__row--total"><span data-i18n="co.total">Toplam</span><b id="coTotal">₺0</b></div>
@@ -105,6 +112,11 @@
     // re-render labels/items on language toggle
     var lt=document.getElementById('langToggle');
     if(lt)lt.addEventListener('click',function(){setTimeout(refresh,30);});
+    var giftChk=document.getElementById('giftChk');
+    if(giftChk)giftChk.addEventListener('change',function(){
+      document.getElementById('giftBox').hidden=!giftChk.checked;
+      document.getElementById('coGift').hidden=!giftChk.checked;
+    });
     form.addEventListener('submit',function(e){
       e.preventDefault();
       var n='';for(var i=0;i<6;i++){n+=Math.floor(Math.random()*10);}

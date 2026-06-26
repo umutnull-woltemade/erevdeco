@@ -261,7 +261,21 @@ window.I18N = {
     "reviews.kicker": "DEĞERLENDİRMELER",
     "reviews.title": "Müşterilerimiz ne diyor?",
     "reviews.based": "1.284 değerlendirmeye göre",
-    "reviews.recommend": "müşterimiz arkadaşına tavsiye ediyor"
+    "reviews.recommend": "müşterimiz arkadaşına tavsiye ediyor",
+
+    "announce": "Sınırlı ilk parti · Tüm siparişlerde ücretsiz kargo",
+    "prod.view.product": "Ürün",
+    "prod.view.anatomy": "Anatomi",
+    "prod.view.life": "Yaşam",
+    "prod.lowstock": "Bu partide son 47 adet",
+
+    "co.gift": "Hediye olarak gönder",
+    "co.giftmsg": "Hediye notu (isteğe bağlı)",
+    "co.giftph": "Sevdiklerinize bir not bırakın…",
+    "co.giftbadge": "🎁 Hediye paketi — ücretsiz",
+
+    "press.title": "Basında",
+    "crumb.home": "Ana Sayfa"
   },
 
   en: {
@@ -525,6 +539,20 @@ window.I18N = {
     "reviews.kicker": "REVIEWS",
     "reviews.title": "What our customers say",
     "reviews.based": "Based on 1,284 reviews",
-    "reviews.recommend": "of customers recommend us to a friend"
+    "reviews.recommend": "of customers recommend us to a friend",
+
+    "announce": "Limited first batch · Free shipping on all orders",
+    "prod.view.product": "Product",
+    "prod.view.anatomy": "Anatomy",
+    "prod.view.life": "Lifestyle",
+    "prod.lowstock": "Only 47 left in this batch",
+
+    "co.gift": "Send as a gift",
+    "co.giftmsg": "Gift note (optional)",
+    "co.giftph": "Leave a note for your loved ones…",
+    "co.giftbadge": "🎁 Gift wrap — free",
+
+    "press.title": "AS SEEN IN",
+    "crumb.home": "Home"
   }
 };
