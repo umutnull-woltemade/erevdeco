@@ -690,3 +690,13 @@ a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{o
 .crumb{display:flex;gap:.5rem;align-items:center;font-size:.78rem;color:var(--ink-40);max-width:var(--maxw);margin:0 auto;padding:0 var(--pad)}
 .crumb a:hover{color:var(--gold)}
 .crumb b{color:var(--ink-60);font-weight:500}
+
+/* PDP mobile sticky add-to-cart */
+.pdp-sticky{position:fixed;left:0;right:0;bottom:0;z-index:90;display:none;align-items:center;justify-content:space-between;gap:1rem;background:rgba(255,255,255,.92);backdrop-filter:saturate(160%) blur(16px);-webkit-backdrop-filter:saturate(160%) blur(16px);border-top:1px solid var(--line);padding:.8rem var(--pad);transform:translateY(120%);transition:transform .5s var(--ease)}
+.pdp-sticky.is-show{transform:none}
+.pdp-sticky__info{display:flex;flex-direction:column;line-height:1.2}
+.pdp-sticky__name{font-size:.74rem;color:var(--ink-60)}
+.pdp-sticky__price{font-family:var(--serif);font-size:1.3rem}
+.pdp-sticky .btn{padding:.9em 1.7em;white-space:nowrap}
+@media (max-width:900px){.pdp-sticky{display:flex}}
+body.cookie-open .pdp-sticky{transform:translateY(120%)!important}

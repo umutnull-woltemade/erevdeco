@@ -380,9 +380,11 @@
     bar.innerHTML = '<span>' + (dict["cookie.text"] || "We use cookies.") + '</span>' +
       '<button class="btn btn--solid cookiebar__btn">' + (dict["cookie.accept"] || "Accept") + '</button>';
     document.body.appendChild(bar);
+    document.body.classList.add("cookie-open");
     requestAnimationFrame(function () { bar.classList.add("is-in"); });
     bar.querySelector("button").addEventListener("click", function () {
       try { localStorage.setItem("erev_cookie", "1"); } catch (e) {}
+      document.body.classList.remove("cookie-open");
       bar.classList.remove("is-in"); setTimeout(function () { bar.remove(); }, 400);
     });
   }

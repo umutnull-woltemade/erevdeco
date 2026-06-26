@@ -11,6 +11,11 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="manifest" href="manifest.webmanifest" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/icon-180.png" />
+  <link rel="canonical" href="https://erevdeco.com/urun.html" />
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://erevdeco.com/"},{"@type":"ListItem","position":2,"name":"Marble Heated Coaster","item":"https://erevdeco.com/urun.html"}]}
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -214,6 +219,11 @@
     </div>
   </section>
 
+  <div class="pdp-sticky" id="pdpSticky">
+    <div class="pdp-sticky__info"><span class="pdp-sticky__name" data-i18n="prod.title">Mermer Sıcak Tutucu</span><span class="pdp-sticky__price" id="pdpStickyPrice">₺1.690</span></div>
+    <button class="btn btn--solid" id="addBtnSticky" data-i18n="prod.add">Sepete Ekle</button>
+  </div>
+
   <script src="js/i18n.js"></script>
   <script src="js/chrome.js"></script>
   <script src="js/cart.js"></script>
@@ -233,11 +243,19 @@
       b.classList.add('is-active');
       curBundle=parseInt(b.dataset.bundle,10);
       now.textContent=money(b.dataset.price);old.textContent=money(b.dataset.old);
+      var sp=document.getElementById('pdpStickyPrice');if(sp)sp.textContent=money(b.dataset.price);
     });});
-    document.getElementById('addBtn').addEventListener('click',function(){
-      var marble=(document.querySelector('.swatch.is-active')||{}).dataset?document.querySelector('.swatch.is-active').dataset.marble:'calacatta';
-      window.Cart.add(curBundle,marble,qty);
-    });
+    function doAdd(){
+      var sw=document.querySelector('.swatch.is-active');
+      window.Cart.add(curBundle,sw?sw.dataset.marble:'calacatta',qty);
+    }
+    document.getElementById('addBtn').addEventListener('click',doAdd);
+    var addS=document.getElementById('addBtnSticky');if(addS)addS.addEventListener('click',doAdd);
+    // reveal sticky bar once the main add button scrolls out of view
+    var sticky=document.getElementById('pdpSticky'),mainAdd=document.getElementById('addBtn');
+    if(sticky&&mainAdd&&'IntersectionObserver' in window){
+      new IntersectionObserver(function(en){en.forEach(function(e){sticky.classList.toggle('is-show',!e.isIntersecting);});},{threshold:0}).observe(mainAdd);
+    }
     var thumbs=document.querySelectorAll('.pthumb'),views=document.querySelectorAll('.pview');
     thumbs.forEach(function(t){t.addEventListener('click',function(){
       thumbs.forEach(function(x){x.classList.remove('is-active');});t.classList.add('is-active');
