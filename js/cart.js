@@ -30,7 +30,7 @@
   function clear() { save([]); }
 
   /* drawer */
-  var drawer;
+  var drawer, cartRelease = null;
   function injectDrawer() {
     if (document.getElementById("cartDrawer")) return;
     var wrap = document.createElement("div");
@@ -48,14 +48,25 @@
     drawer.querySelectorAll("[data-cart-close]").forEach(function (b) { b.addEventListener("click", closeDrawer); });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeDrawer(); });
   }
-  function openDrawer() { injectDrawer(); render(); drawer.classList.add("is-open"); drawer.setAttribute("aria-hidden", "false"); }
-  function closeDrawer() { if (drawer) { drawer.classList.remove("is-open"); drawer.setAttribute("aria-hidden", "true"); } }
+  function openDrawer() {
+    injectDrawer(); render(); drawer.classList.add("is-open"); drawer.setAttribute("aria-hidden", "false");
+    document.querySelectorAll("[data-cart-toggle]").forEach(function (b) { b.setAttribute("aria-expanded", "true"); });
+    var panel = drawer.querySelector(".cart__panel");
+    if (window.ErevA11y && panel) cartRelease = window.ErevA11y.trap(panel, closeDrawer);
+  }
+  function closeDrawer() {
+    if (!drawer) return;
+    drawer.classList.remove("is-open"); drawer.setAttribute("aria-hidden", "true");
+    document.querySelectorAll("[data-cart-toggle]").forEach(function (b) { b.setAttribute("aria-expanded", "false"); });
+    if (cartRelease) { cartRelease(); cartRelease = null; }
+  }
 
   function render() {
     // badges
     var c = count();
     document.querySelectorAll("[data-cart-count]").forEach(function (el) {
       el.textContent = c; el.classList.toggle("is-empty", c === 0);
+      el.setAttribute("aria-live", "polite");
     });
     if (!drawer) drawer = document.getElementById("cartDrawer");
     if (!drawer) return;
@@ -98,6 +109,7 @@
   function wire() {
     injectDrawer(); render();
     document.querySelectorAll("[data-cart-toggle]").forEach(function (b) {
+      b.setAttribute("aria-haspopup", "dialog"); b.setAttribute("aria-expanded", "false");
       b.addEventListener("click", function (e) { e.preventDefault(); openDrawer(); });
     });
     document.querySelectorAll("[data-add-to-cart]").forEach(function (b) {

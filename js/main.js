@@ -3,6 +3,30 @@
   "use strict";
   var state = { lang: "tr", phase: -1 };
 
+  /* ---------- Focus trap (shared via window.ErevA11y) ---------- */
+  function focusables(c) {
+    return c.querySelectorAll('a[href],button:not([disabled]),input:not([disabled]),textarea,select,[tabindex]:not([tabindex="-1"])');
+  }
+  function trap(container, onEsc) {
+    var prev = document.activeElement;
+    var f = focusables(container);
+    if (f.length) f[0].focus();
+    function onKey(e) {
+      if (e.key === "Escape") { if (onEsc) onEsc(); return; }
+      if (e.key !== "Tab") return;
+      var list = focusables(container); if (!list.length) return;
+      var first = list[0], last = list[list.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
+    container.addEventListener("keydown", onKey);
+    return function release() {
+      container.removeEventListener("keydown", onKey);
+      if (prev && prev.focus) try { prev.focus(); } catch (e) {}
+    };
+  }
+  window.ErevA11y = { trap: trap };
+
   /* ---------- i18n ---------- */
   function applyLang(lang) {
     state.lang = lang;
@@ -148,8 +172,9 @@
     if (!modal) return;
     var shown = false;
     try { shown = localStorage.getItem("erev_exit") === "1"; } catch (e) {}
-    function open() { if (shown) return; shown = true; modal.classList.add("is-open"); modal.setAttribute("aria-hidden", "false"); try { localStorage.setItem("erev_exit", "1"); } catch (e) {} }
-    function close() { modal.classList.remove("is-open"); modal.setAttribute("aria-hidden", "true"); }
+    var panel = modal.querySelector(".modal__panel"), release = null;
+    function open() { if (shown) return; shown = true; modal.classList.add("is-open"); modal.setAttribute("aria-hidden", "false"); release = trap(panel || modal, close); try { localStorage.setItem("erev_exit", "1"); } catch (e) {} }
+    function close() { modal.classList.remove("is-open"); modal.setAttribute("aria-hidden", "true"); if (release) { release(); release = null; } }
     document.addEventListener("mouseout", function (e) { if (e.clientY <= 0 && !e.relatedTarget) open(); });
     var armed = false; setTimeout(function () { armed = true; }, 12000);
     var lastY = window.pageYOffset;
@@ -316,8 +341,10 @@
     });
     overlay.appendChild(inner);
     document.body.appendChild(overlay);
-    function close() { overlay.classList.remove("is-open"); burger.classList.remove("is-open"); document.body.style.overflow = ""; }
-    function open() { overlay.classList.add("is-open"); burger.classList.add("is-open"); document.body.style.overflow = "hidden"; }
+    burger.setAttribute("aria-expanded", "false");
+    var release = null;
+    function close() { overlay.classList.remove("is-open"); burger.classList.remove("is-open"); document.body.style.overflow = ""; burger.setAttribute("aria-expanded", "false"); if (release) { release(); release = null; } }
+    function open() { overlay.classList.add("is-open"); burger.classList.add("is-open"); document.body.style.overflow = "hidden"; burger.setAttribute("aria-expanded", "true"); release = trap(overlay, close); }
     burger.addEventListener("click", function () { overlay.classList.contains("is-open") ? close() : open(); });
     overlay.addEventListener("click", function (e) { if (e.target === overlay || e.target.tagName === "A") close(); });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
