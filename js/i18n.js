@@ -275,7 +275,8 @@ window.I18N = {
     "co.giftbadge": "🎁 Hediye paketi — ücretsiz",
 
     "press.title": "Basında",
-    "crumb.home": "Ana Sayfa"
+    "crumb.home": "Ana Sayfa",
+    "prod.popular": "En sevilen"
   },
 
   en: {
@@ -553,6 +554,7 @@ window.I18N = {
     "co.giftbadge": "🎁 Gift wrap — free",
 
     "press.title": "AS SEEN IN",
-    "crumb.home": "Home"
+    "crumb.home": "Home",
+    "prod.popular": "Most loved"
   }
 };

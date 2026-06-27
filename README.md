@@ -40,7 +40,16 @@ manifest.webmanifest, favicon.svg, robots.txt, sitemap.xml
 ```
 
 ### Storefront
-Full front-end commerce funnel — no backend: a `localStorage` cart with a slide-out drawer (shared across every page), a product page with live marble + bundle + quantity selection, and a checkout that validates, generates an order number, and clears the cart. Installable PWA with an offline shell cache; `robots.txt` + `sitemap.xml` for SEO.
+Full front-end commerce funnel — no backend:
+- **Cart** — `localStorage` cart + slide-out drawer on every page (qty steppers, marble thumbnails, live subtotal, free shipping), focus-trapped + ARIA.
+- **Product page** — live marble + bundle (Single/Duo/Trio, "most loved" badge) + quantity, gallery **view-switcher** (Product / exploded Anatomy / Lifestyle line-scene), low-stock urgency, reviews module (score + rating bars + cards), in-the-box, specs, mobile sticky add-to-cart.
+- **Checkout** — contact/shipping/payment form, gift option (wrap + note), order summary, order-number confirmation, empty + success states.
+- **Conversion** — dismissible announcement bar, exit-intent discount modal, scarcity counters, cookie/KVKK consent, sticky CTAs.
+- **PWA** — installable, service-worker offline shell cache (`sw.js`, bump `CACHE` on asset change).
+- **SEO** — canonical links, Product/Organization/WebSite/BreadcrumbList JSON-LD, `robots.txt`, `sitemap.xml`, branded OG image, apple-touch-icon.
+- **A11y** — skip link, focus traps (cart/menu/modal) with focus return, `aria-expanded`/`aria-live`, `prefers-reduced-motion`, focus-visible rings.
+
+> Global CSS rule `[hidden]{display:none!important}` is load-bearing — the checkout/empty/success state machine relies on it overriding `display:grid/flex`.
 
 ## Run locally
 
